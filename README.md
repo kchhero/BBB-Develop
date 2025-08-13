@@ -9,6 +9,71 @@ I created the repository on August 12, 2025, but I've already completed the Yoct
 
 I plan to provide daily progress updates starting August 13, 2025.
 
+## bblayer.conf
+BBLAYERS ?= " \
+  /home/suker/myYocto/poky/meta \
+  /home/suker/myYocto/poky/meta-poky \
+  /home/suker/myYocto/poky/meta-yocto-bsp \
+  /home/suker/myYocto/poky/meta-openembedded/meta-oe \
+  /home/suker/myYocto/poky/meta-openembedded/meta-multimedia \
+  /home/suker/myYocto/poky/meta-openembedded/meta-python \
+  /home/suker/myYocto/poky/meta-arm/meta-arm-toolchain \
+  /home/suker/myYocto/poky/meta-arm/meta-arm \
+  /home/suker/myYocto/poky/meta-ti/meta-ti-bsp \
+  /home/suker/myYocto/poky/meta-qt5 \
+  /home/suker/myYocto/poky/meta-sukerbeaglebone \
+  "
+  
+## local.conf
+MACHINE ?= "beaglebone"
+
+DISTRO ?= "poky"
+PACKAGE_CLASSES ?= "package_rpm"
+
+EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
+
+USER_CLASSES ?= "buildstats"
+
+PATCHRESOLVE = "noop"
+
+BB_DISKMON_DIRS ??= "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    HALT,${TMPDIR},100M,1K \
+    HALT,${DL_DIR},100M,1K \
+    HALT,${SSTATE_DIR},100M,1K \
+    HALT,/tmp,10M,1K"
+
+PACKAGECONFIG:append:pn-qemu-system-native = " sdl"
+
+CONF_VERSION = "2"
+
+MYDIR := "/home/suker/myYocto"
+DL_DIR ?= "${MYDIR}/downloads"
+SSTATE_DIR ?= "${MYDIR}/sstate-cache"
+TMPDIR = "${TOPDIR}/tmp"
+RM_OLD_IMAGE = "1"
+
+DISTRO_FEATURES = "systemd udev opengl alsa splash"
+DISTRO_FEATURES:remove = " wayland"
+
+VIRTUAL-RUNTIME_init_manager = "systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+
+PACKAGECONFIG:remove:pn-qtbase = "wayland"
+#PACKAGECONFIG:append:pn-qtbase = "x11"
+PACKAGECONFIG:append:pn-qtbase = " eglfs linuxfb"
+
+LICENSE_FLAGS_ACCEPTED = "ti-sgx-ddk-um"
+
+UBOOT_MMC_BOOT_BUILD_CONFIG = "1"
+
+BB_NUMBER_THREADS ?= "8"
+PARALLEL_MAKE ?= "-j 8"
+
+
 ## linux-kernel
 ### source download
   $ git clone https://git.ti.com/git/ti-linux-kernel/ti-linux-kernel.git linux-bbb-local
