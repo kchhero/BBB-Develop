@@ -4,38 +4,17 @@ Please see the corresponding sections below for details.
 
 Dependencies
 ============
+  meta-ti/meta-ti-bsp/recipes-kernel/linux ==>
+      URI : git://github.com/beagleboard/linux.git
+      Branch : v6.1.80-ti-r34
+      defconfig : bb.org_defconfig
+      This source files download in my local PC
 
-  URI: <first dependency>
-  branch: <branch name>
+  patch SRCREV : 
+    commit 9fcc10549a76cab2f7b19a77c9720956aafe1271 (HEAD -> v6.1.80-ti-r34)
 
-  URI: <second dependency>
-  branch: <branch name>
-
-  .
-  .
-  .
-
-Patches
-=======
-
-Please submit any patches against the meta-suker layer to the xxxx mailing list (xxxx@zzzz.org)
-and cc: the maintainer:
-
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+Maintainer: SUKER <kchhero@gmail.com>
 
 Table of Contents
 =================
-
-  I. Adding the meta-suker layer to your build
- II. Misc
-
-
-I. Adding the meta-suker layer to your build
-=================================================
-
-Run 'bitbake-layers add-layer meta-suker'
-
-II. Misc
-========
-
---- replace with specific information about the meta-suker layer ---
+  I.  Activates HDMI output and sets the resolution (1024x600) and timing of the 7-inch LCD.
