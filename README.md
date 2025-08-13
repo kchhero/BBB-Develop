@@ -11,10 +11,10 @@ I plan to provide daily progress updates starting August 13, 2025.
 
 ## linux-kernel
 ### source download
-  git clone https://git.ti.com/git/ti-linux-kernel/ti-linux-kernel.git linux-bbb-local
-  cd linux-bbb-local
-  git checkout c99a15d2677b251e5de6c5f28eafc5042e02dc6e
-
+  $ git clone https://git.ti.com/git/ti-linux-kernel/ti-linux-kernel.git linux-bbb-local
+  $ cd linux-bbb-local
+  $ git checkout c99a15d2677b251e5de6c5f28eafc5042e02dc6e
+  
   It is the same branch as meta-ti kirkstone, SRCREV version.
   For convenience, the source code is downloaded separately to modify the source code and develop the device driver directly on the local PC.
 
