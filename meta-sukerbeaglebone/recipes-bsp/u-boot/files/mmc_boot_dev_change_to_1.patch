@@ -1,0 +1,13 @@
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index f872000c5a1..b59b6d29b17 100644
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -81,7 +81,7 @@
+ #define CFG_EXTRA_ENV_SETTINGS \
+ 	DEFAULT_LINUX_BOOT_ENV \
+ 	"fdtfile=undefined\0" \
+-	"finduuid=part uuid mmc 0:2 uuid\0" \
++	"finduuid=part uuid mmc 1:2 uuid\0" \
+ 	"console=ttyO0,115200n8\0" \
+ 	"partitions=" \
+ 		"uuid_disk=${uuid_gpt_disk};" \
