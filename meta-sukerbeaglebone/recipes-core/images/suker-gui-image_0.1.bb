@@ -11,25 +11,20 @@ require recipes-extended/images/core-image-full-cmdline.bb
 ROOTFS_POSTPROCESS_COMMAND += " install_emmc_flash_script;"
 
 SRC_URI += " \
-    file://beaglebone-black-eMMC-flasher.sh \
+    file://gpio_test.sh \
     file://AI_version-beaglebone-black-eMMC-flasher.sh \
     "
 
 install_emmc_flash_script() {
     install -d ${IMAGE_ROOTFS}/opt/scripts
-    install -m 0755 ${THISDIR}/files/beaglebone-black-eMMC-flasher.sh ${IMAGE_ROOTFS}/opt/scripts/beaglebone-black-eMMC-flasher.sh
+    install -m 0755 ${THISDIR}/files/gpio_test.sh ${IMAGE_ROOTFS}/opt/scripts/gpio_test.sh
     install -m 0755 ${THISDIR}/files/AI_version-beaglebone-black-eMMC-flasher.sh ${IMAGE_ROOTFS}/opt/scripts/AI_version-beaglebone-black-eMMC-flasher.sh
 }
 
 # 이미지에 Qt5 및 tslib 구성 요소를 추가합니다.
 IMAGE_INSTALL:append = " \
         qtbase \
-        qtbase-plugins \
-        tslib \        
-        qtdeclarative \
-        qtquickcontrols2 \        
-        qt5ledscreen \
-        qt5everywheredemo \
+        tslib \
         parted \
         dosfstools \
         rsync \
@@ -39,8 +34,11 @@ IMAGE_INSTALL:append = " \
         udev \
         "
 
+# IMAGE_INSTALL:remove = "mesa-pvr"
+# MACHINE_FEATURES:remove = "gpu"
+
 PN = "suker-gui-image"
 
-IMAGE_ROOTFS_SIZE = "1048576"
+IMAGE_ROOTFS_SIZE = "524288"
 #IMAGE_ROOTFS_EXTRA_SPACE = "1048576"
 IMAGE_OVERHEAD_FACTOR = "1.0"

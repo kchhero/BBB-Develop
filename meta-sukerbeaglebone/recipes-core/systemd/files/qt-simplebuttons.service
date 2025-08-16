@@ -1,0 +1,12 @@
+[Unit]
+Description=Qt Sample App
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/simplebuttons
+Restart=always
+Environment=QT_QPA_PLATFORM=linuxfb
+
+[Install]
+WantedBy=graphical.target

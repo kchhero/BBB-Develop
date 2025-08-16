@@ -1,0 +1,5 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/linux:"
+
+SRC_URI += "file://my-kernel-config.cfg"
+
+KERNEL_FEATURES += "cfg/my-kernel-config.cfg"

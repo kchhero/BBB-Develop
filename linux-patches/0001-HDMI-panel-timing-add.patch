@@ -1,0 +1,57 @@
+From fdfa770b41b1429021d70dbd04c0b00a8fc2ed81 Mon Sep 17 00:00:00 2001
+From: kchhero <kchhero@gmail.com>
+Date: Fri, 15 Aug 2025 20:41:13 +0900
+Subject: [PATCH] HDMI panel-timing add
+
+---
+ .../boot/dts/am335x-boneblack-ite-hdmi.dtsi   | 20 +++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi b/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
+index b311e936577d..9572a986d533 100644
+--- a/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
++++ b/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
+@@ -90,6 +90,8 @@ lcdc_0: endpoint@0 {
+ };
+ 
+ &i2c0 {
++	status = "okay";
++	
+ 	it66122: bridge-hdmi@4c {
+ 		compatible = "ite,it66122";
+ 		reg = <0x4c>;
+@@ -104,6 +106,8 @@ it66122: bridge-hdmi@4c {
+ 		interrupts = <25 IRQ_TYPE_EDGE_FALLING>;
+ 		#sound-dai-cells = <0>;
+ 
++		status = "okay";
++
+ 		ports {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+@@ -125,6 +129,22 @@ it66122_out: endpoint {
+ 				};
+ 			};
+ 		};
++
++		panel-timing {
++			clock-frequency = <51200000>;
++			hactive = <1024>;
++			vactive = <600>;
++			hfront-porch = <160>;
++			hback-porch = <140>;
++			hsync-len = <20>;
++			vfront-porch = <22>;
++			vback-porch = <21>;
++			vsync-len = <12>;
++			hsync-active = <0>;
++			vsync-active = <0>;
++			de-active = <1>;
++			pixelclk-active = <1>;
++		};
+ 	};
+ };
+ 
+-- 
+2.34.1
+
