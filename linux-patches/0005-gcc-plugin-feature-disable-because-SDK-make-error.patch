@@ -1,0 +1,53 @@
+From 6ea4f91342943d862b18b0bfb50fb238a899ec19 Mon Sep 17 00:00:00 2001
+From: kchhero <kchhero@gmail.com>
+Date: Sat, 16 Aug 2025 23:21:08 +0900
+Subject: [PATCH 5/8] gcc plugin feature disable, because SDK make error
+
+---
+ arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi | 2 ++
+ arch/arm/configs/bb.org_defconfig                | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi b/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
+index 9572a986d533..407220b80516 100644
+--- a/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
++++ b/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
+@@ -91,6 +91,7 @@ lcdc_0: endpoint@0 {
+ 
+ &i2c0 {
+ 	status = "okay";
++	clock-frequency = <100000>;
+ 	
+ 	it66122: bridge-hdmi@4c {
+ 		compatible = "ite,it66122";
+@@ -107,6 +108,7 @@ it66122: bridge-hdmi@4c {
+ 		#sound-dai-cells = <0>;
+ 
+ 		status = "okay";
++		mode_str = "1024x600@60";
+ 
+ 		ports {
+ 			#address-cells = <1>;
+diff --git a/arch/arm/configs/bb.org_defconfig b/arch/arm/configs/bb.org_defconfig
+index 750efb236f3c..ee871e29c80c 100644
+--- a/arch/arm/configs/bb.org_defconfig
++++ b/arch/arm/configs/bb.org_defconfig
+@@ -91,6 +91,7 @@ CONFIG_APM_EMULATION=y
+ CONFIG_ENERGY_MODEL=y
+ CONFIG_KPROBES=y
+ CONFIG_JUMP_LABEL=y
++# CONFIG_GCC_PLUGINS is not set
+ CONFIG_MODULES=y
+ CONFIG_MODULE_FORCE_LOAD=y
+ CONFIG_MODULE_UNLOAD=y
+@@ -1673,7 +1674,6 @@ CONFIG_DRM_TIDSS=y
+ CONFIG_FB=y
+ CONFIG_FB_SMSCUFX=m
+ CONFIG_FB_UDL=m
+-CONFIG_FB_SIMPLE=y
+ CONFIG_FB_SSD1307=y
+ CONFIG_FIRMWARE_EDID=y
+ CONFIG_FB_TILEBLITTING=y
+-- 
+2.43.0
+

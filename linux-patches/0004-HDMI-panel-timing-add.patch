@@ -1,7 +1,7 @@
 From fdfa770b41b1429021d70dbd04c0b00a8fc2ed81 Mon Sep 17 00:00:00 2001
 From: kchhero <kchhero@gmail.com>
 Date: Fri, 15 Aug 2025 20:41:13 +0900
-Subject: [PATCH] HDMI panel-timing add
+Subject: [PATCH 4/8] HDMI panel-timing add
 
 ---
  .../boot/dts/am335x-boneblack-ite-hdmi.dtsi   | 20 +++++++++++++++++++
@@ -53,5 +53,5 @@ index b311e936577d..9572a986d533 100644
  };
  
 -- 
-2.34.1
+2.43.0
 

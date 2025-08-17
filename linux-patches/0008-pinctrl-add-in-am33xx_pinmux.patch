@@ -1,0 +1,32 @@
+From 0b6042ce56a66944bf4abd404e2ad159a76d8fca Mon Sep 17 00:00:00 2001
+From: kchhero <kchhero@gmail.com>
+Date: Sun, 17 Aug 2025 23:03:05 +0900
+Subject: [PATCH 8/8] pinctrl add in am33xx_pinmux
+
+---
+ arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi b/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
+index 407220b80516..9c179f7dbaaf 100644
+--- a/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
++++ b/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
+@@ -68,6 +68,15 @@ AM33XX_PADCONF(AM335X_PIN_MCASP0_ACLKX, PIN_OUTPUT_PULLDOWN, MUX_MODE0)
+ 			AM33XX_PADCONF(AM335X_PIN_GPMC_A11, PIN_OUTPUT_PULLDOWN, MUX_MODE7) /* gpmc_a11.GPIO1_27 */
+ 		>;
+ 	};
++
++	myleds_pins: pinmux_myleds_pins {
++		pinctrl-single,pins = <
++			AM33XX_PADCONF(AM335X_PIN_GPMC_AD12, PIN_OUTPUT, MUX_MODE7)
++			AM33XX_PADCONF(AM335X_PIN_GPMC_AD13, PIN_OUTPUT, MUX_MODE7)
++			AM33XX_PADCONF(AM335X_PIN_GPMC_AD14, PIN_OUTPUT, MUX_MODE7)
++			AM33XX_PADCONF(AM335X_PIN_GPMC_AD15, PIN_OUTPUT, MUX_MODE7)
++		>;
++	};
+ };
+ 
+ &lcdc {
+-- 
+2.43.0
+

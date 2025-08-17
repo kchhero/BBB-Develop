@@ -1,0 +1,35 @@
+From 5f911c91d9c0f75333f4fee008e37ee2b2c1a9d3 Mon Sep 17 00:00:00 2001
+From: kchhero <kchhero@gmail.com>
+Date: Sun, 17 Aug 2025 18:19:54 +0900
+Subject: [PATCH 6/8] GPIO TEST, P8_11,12,15,16 mapped
+
+---
+ arch/arm/boot/dts/am335x-boneblack-revd.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm/boot/dts/am335x-boneblack-revd.dts b/arch/arm/boot/dts/am335x-boneblack-revd.dts
+index fbff251734ab..ab0261e02b4c 100644
+--- a/arch/arm/boot/dts/am335x-boneblack-revd.dts
++++ b/arch/arm/boot/dts/am335x-boneblack-revd.dts
+@@ -17,6 +17,18 @@ chosen {
+ 		base_dtb = "am335x-boneblack-revd.dts";
+ 		base_dtb_timestamp = __TIMESTAMP__;
+ 	};
++
++	myleds {
++		compatible = "mycompany,myleds";
++		status = "okay";
++
++		led-gpios = <&gpio1 12 GPIO_ACTIVE_HIGH>,
++			    <&gpio1 13 GPIO_ACTIVE_HIGH>,
++			    <&gpio1 14 GPIO_ACTIVE_HIGH>,
++			    <&gpio1 15 GPIO_ACTIVE_HIGH>;
++
++		label = "userext";
++	};
+ };
+ 
+ &cpu0_opp_table {
+-- 
+2.43.0
+

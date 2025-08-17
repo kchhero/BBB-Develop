@@ -1,7 +1,7 @@
 From b680aef9e06823116df00c2b8041fc9e424f83b2 Mon Sep 17 00:00:00 2001
 From: kchhero <kchhero@gmail.com>
 Date: Fri, 8 Aug 2025 23:31:13 +0900
-Subject: [PATCH] temp ti dts files move
+Subject: [PATCH 1/8] temp ti dts files move
 
 ---
  arch/arm/boot/dts/AM335X-PRU-UIO-00A0.dtso    |   28 +
@@ -101872,5 +101872,5 @@ index 000000000000..64e38c7c8be7
 +	};
 +};
 -- 
-2.34.1
+2.43.0
 

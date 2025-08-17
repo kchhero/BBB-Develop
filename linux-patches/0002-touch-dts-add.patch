@@ -1,7 +1,7 @@
 From 03d729e092dfc4865d4561c07635be191711bea7 Mon Sep 17 00:00:00 2001
 From: kchhero <kchhero@gmail.com>
 Date: Mon, 11 Aug 2025 18:08:00 +0900
-Subject: [PATCH] touch dts add
+Subject: [PATCH 2/8] touch dts add
 
 ---
  arch/arm/boot/dts/BB-I2C1-TOUCH-00A0.dtso | 40 +++++++++++++++++++++++
@@ -68,5 +68,5 @@ index adae85c5a286..be13df5b59dc 100644
  	BB-UART4-00A0.dtbo \
  	BB-UART2-00A0.dtbo \
 -- 
-2.34.1
+2.43.0
 

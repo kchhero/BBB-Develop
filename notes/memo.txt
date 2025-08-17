@@ -1,0 +1,11 @@
+1. defconfig work flow
+  $ bitbake -c menuconfig virtual/kernel
+  $ bitbake -c savedefconfig virtual/kernel
+  $ cp defconfig org_defconfig
+
+2. vscode 에서 ctags 사용
+ # Universal Ctags 활용
+   $ sudo apt install universal-ctags
+ # linux kernel root에서
+   $ ctags -R --languages=DTS --extras=+q --fields=+iaS
+

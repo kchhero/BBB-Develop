@@ -1,7 +1,7 @@
 From 8875a0915c47d0a4a7caf2428cad830f64fa5769 Mon Sep 17 00:00:00 2001
 From: kchhero <kchhero@gmail.com>
 Date: Fri, 15 Aug 2025 19:03:26 +0900
-Subject: [PATCH] input device enabled, /dev/input
+Subject: [PATCH 3/8] input device enabled, /dev/input
 
 ---
  arch/arm/configs/bb.org_defconfig | 9 +++++++--
@@ -52,5 +52,5 @@ index c235947c4bfe..750efb236f3c 100644
  CONFIG_NINTENDO_FF=y
  CONFIG_HID_NTI=m
 -- 
-2.34.1
+2.43.0
 
