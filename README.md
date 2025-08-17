@@ -86,16 +86,18 @@ PARALLEL_MAKE ?= "-j 8"
   It is the same branch as meta-ti kirkstone, SRCREV version.
   For convenience, the source code is downloaded separately to modify the source code and develop the device driver directly on the local PC.
 
+
 ## u-boot
   I decided to use u-boot as is, but I overrode only the dtb file.
   See, u-boot-ti-staging_%.bbappend  ==> am335x-boneblack-revd.dtb
+
   
 
-# Release
-## 1. GPIO control 1
+## My Note
+### 1. GPIO control 1
        device tree develop using C and dts, legacy work flow. Some LED circuit toggle control.
        ==> 08.15 start
        ==> 08.17 complete
-## 2. GPIO control 2
+### 2. GPIO control 2
        I'll be using Rust to control GPIO. Both the device tree and the app will use Rust.
        ==> 08.18 start
