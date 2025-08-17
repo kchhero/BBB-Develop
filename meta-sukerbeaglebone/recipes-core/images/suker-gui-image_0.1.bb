@@ -28,10 +28,14 @@ IMAGE_INSTALL:append = " \
         parted \
         dosfstools \
         rsync \
-        simplebuttons \
         i2c-tools \
         evtest \
         udev \
+        "
+
+IMAGE_INSTALL:append = " \
+        simplebuttons \
+        led-control \
         "
 
 # IMAGE_INSTALL:remove = "mesa-pvr"
