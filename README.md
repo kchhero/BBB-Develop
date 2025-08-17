@@ -91,3 +91,11 @@ PARALLEL_MAKE ?= "-j 8"
   See, u-boot-ti-staging_%.bbappend  ==> am335x-boneblack-revd.dtb
   
 
+# Release
+## 1. GPIO control 1
+       device tree develop using C and dts, legacy work flow. Some LED circuit toggle control.
+       ==> 08.15 start
+       ==> 08.17 complete
+## 2. GPIO control 2
+       I'll be using Rust to control GPIO. Both the device tree and the app will use Rust.
+       ==> 08.18 start
