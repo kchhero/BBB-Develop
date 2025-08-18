@@ -15,6 +15,10 @@
 
 
    
-## 2. GPIO control 2
+## 2. GPIO control 2 (from RUST)
    #### I'll be using Rust to control GPIO. Both the device tree and the app will use Rust.
    * 2025/08/18 : start
+
+   #### BeagleBone Black runs a lightweight web server. A simple web server (actix-web) was created in Rust and provides API endpoints (/led/on, /led/off) for controlling the LED.
+   
+   #### The UI is accessed via a web browser on a PC or smartphone. Users access the BeagleBone Black's IP address from their PC or smartphone and control the LED via the web UI.
