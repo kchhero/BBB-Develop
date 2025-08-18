@@ -1,4 +1,4 @@
-# BBB-Rust-Driver
+# BBB-Develop
 
 I'm experimenting and developing various things on the BeagleBone Black board.
 I plan to create a binary using Yocto Base.
@@ -94,14 +94,12 @@ PARALLEL_MAKE ?= "-j 8"
   I decided to use u-boot as is, but I overrode only the dtb file.
   See, u-boot-ti-staging_%.bbappend  ==> am335x-boneblack-revd.dtb
 
-  
-
-## My Note
-### 1. GPIO control 1
-       device tree develop using C and dts, legacy work flow. Some LED circuit toggle control.
-       ==> 08.15 start
-       ==> 08.17 complete
-
-### 2. GPIO control 2
-       I'll be using Rust to control GPIO. Both the device tree and the app will use Rust.
-       ==> 08.18 start
+## My Work List
+* BeagleBone-black(revD) board bring-up, WaveShare 7" HDMI-LCD(C) bring-up
+* simple app test, file transfer to ethernet, touch/mouse/keyboard check
+* GPIO control device driver develop. control app QT simple app develop
+* GPIO control app (bridge) for RUST. PC or Smartphone UI app develop
+* Camera module bring-up.
+* wifi module bring-up.
+* Receive data from the camera module and display it on the board LCD.
+* Receive data from the camera module and send it to a PC or smartphone
