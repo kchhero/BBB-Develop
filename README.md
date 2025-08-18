@@ -7,6 +7,9 @@ My PC is Ubuntu 16.04.
 I'm connecting a Waveshare 7" HDMI-LCD-(C) and building a simple user input environment using a QT app. For example, pressing touch button A will activate GPIO pin 1 high. The specific operation method will be documented on this page.
 I created the repository on August 12, 2025, but I've already completed the Yocto build configuration and LCD bring-up. There was a slight error because the touch operation was handled by the USB-HID driver, not I2C.
 
+![20250818_131248](https://github.com/user-attachments/assets/bf92755b-ffc1-4963-860f-cb77fa87d6d7)
+
+
 I plan to provide daily progress updates starting August 13, 2025.
 
 ## bblayer.conf
@@ -98,6 +101,7 @@ PARALLEL_MAKE ?= "-j 8"
        device tree develop using C and dts, legacy work flow. Some LED circuit toggle control.
        ==> 08.15 start
        ==> 08.17 complete
+
 ### 2. GPIO control 2
        I'll be using Rust to control GPIO. Both the device tree and the app will use Rust.
        ==> 08.18 start
