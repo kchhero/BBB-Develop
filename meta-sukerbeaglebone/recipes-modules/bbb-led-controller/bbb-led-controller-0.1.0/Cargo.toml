@@ -1,0 +1,11 @@
+[package]
+name = "bbb-led-controller"
+version = "0.1.0"
+edition = "2018"
+license = "MIT"
+description = "web server to control BeagleBone Black's LED"
+repository = "https://github.com/kchhero/BBB-Develop.git"
+
+[dependencies]
+actix-web = "4"
+actix-files = "0.6"

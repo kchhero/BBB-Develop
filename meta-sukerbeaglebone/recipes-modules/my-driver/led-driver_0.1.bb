@@ -10,4 +10,15 @@ SRC_URI = "file://led_driver.c \
 
 S = "${WORKDIR}"
 
+do_install(){
+        #install to /usr/bin/
+        install -d ${D}${bindir}
+        install -m 0755 ${S}/led_driver.ko ${D}${bindir}
+}
+
+# package skip
+# [installed-vs-shipped]
+INSANE_SKIP:${PN} += "installed-vs-shipped"
+#FILES:${PN} += "${D}${bindir}/led_driver.ko"
+
 #KERNEL_MODULE_AUTOLOAD = "led_driver"

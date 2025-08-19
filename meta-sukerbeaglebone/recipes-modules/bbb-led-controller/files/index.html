@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeagleBone LED 컨트롤러</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background-color: #f0f0f0; }
+       .container { max-width: 400px; margin: 50px auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover { background-color: #0056b3; }
+        #status { margin-top: 20px; font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LED 컨트롤러</h1>
+        <button onclick="toggleLed(12)">P8_12 토글</button>
+        <button onclick="toggleLed(13)">P8_11 토글</button>
+        <button onclick="toggleLed(14)">P8_16 토글</button>
+        <button onclick="toggleLed(15)">P8_15 토글</button>
+        <p id="status">버튼을 눌러 LED를 제어하세요.</p>
+    </div>
+
+    <script>
+        async function toggleLed(pinNumber) {
+            const statusElement = document.getElementById('status');
+            statusElement.textContent = `Line ${pinNumber} 토글 요청 중...`;
+
+            try {
+                const response = await fetch(`/led/${pinNumber}/toggle`, {
+                    method: 'POST'
+                });
+
+                const responseText = await response.text();
+
+                if (response.ok) {
+                    statusElement.textContent = responseText;
+                } else {
+                    statusElement.textContent = `오류: ${responseText}`;
+                }
+            } catch (error) {
+                statusElement.textContent = `네트워크 오류: ${error}`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -36,6 +36,7 @@ IMAGE_INSTALL:append = " \
 IMAGE_INSTALL:append = " \
         simplebuttons \
         led-control \
+        led-driver \
         "
 
 # IMAGE_INSTALL:remove = "mesa-pvr"
