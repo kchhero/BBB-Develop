@@ -20,5 +20,6 @@
    * 2025/08/18 : start
 
    #### BeagleBone Black runs a lightweight web server. A simple web server (actix-web) was created in Rust and provides API endpoints (/led/on, /led/off) for controlling the LED.
+   - step : $ board booting > $ insmod led_driver.ko > $ ifconfig eth0 192.168.10.2 up > $ bbb-led-controller > PC web browser connect 192.168.10.2:8080 
    
    #### The UI is accessed via a web browser on a PC or smartphone. Users access the BeagleBone Black's IP address from their PC or smartphone and control the LED via the web UI.
