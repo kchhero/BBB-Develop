@@ -1,0 +1,10 @@
+[Match]
+Name=en* eth*
+
+[Network]
+Description=Static IP configuration for the main Ethernet port
+
+Address=192.168.10.2/24
+Gateway=192.168.10.1
+DNS=8.8.8.8
+DNS=1.1.1.1

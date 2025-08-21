@@ -1,16 +1,21 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
-            file://eth0.network \
-            file://qt-simplebuttons.service \
+            file://10-eth0.network \
             "
+# SRC_URI += " \
+#             file://qt-simplebuttons.service \
+#             "
+
+PACKAGECONFIG:append = " networkd resolved"
 
 do_install:append() {
-    install -m 0644 ${WORKDIR}/eth0.network ${D}${sysconfdir}/systemd/network/
+    install -d ${D}${sysconfdir}/systemd/network
+    install -m 0644 ${WORKDIR}/10-eth0.network ${D}${sysconfdir}/systemd/network/10-eth0.network
 
-    install -d ${D}${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/qt-simplebuttons.service ${D}${systemd_unitdir}/system/qt-simplebuttons.service
+    # install -d ${D}${systemd_unitdir}/system
+    # install -m 0644 ${WORKDIR}/qt-simplebuttons.service ${D}${systemd_unitdir}/system/qt-simplebuttons.service
 }
 
-#PACKAGECONFIG:remove = " binfmt"
-#PACKAGES:remove = "${PN}-binfmt"
+#SYSTEMD_SERVICE:${PN} += "qt-simplebuttons.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
