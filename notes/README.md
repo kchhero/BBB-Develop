@@ -23,3 +23,9 @@
    - step : $ board booting > $ insmod led_driver.ko > $ ifconfig eth0 192.168.10.2 up > $ bbb-led-controller > PC web browser connect 192.168.10.2:8080 
    
    #### The UI is accessed via a web browser on a PC or smartphone. Users access the BeagleBone Black's IP address from their PC or smartphone and control the LED via the web UI.
+   --> complete : https://github.com/kchhero/BBB-Develop/commit/b6fb8448bc80d87877c50e1501460ea5d51772d3
+
+
+https://github.com/user-attachments/assets/64102ca5-d0a9-471f-a96d-ad6ac5cfcf4a
+
+   #### We've completed a crucial test. As shown in the video above, clicking the left/right 50ms movement on the local PC will activate the PCA9685 driver and servo motor via the Beagle board connected via Ethernet. Now, if we connect a WiFi module to this, we can also activate it on our smartphone.
