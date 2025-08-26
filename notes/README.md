@@ -29,3 +29,18 @@
 https://github.com/user-attachments/assets/64102ca5-d0a9-471f-a96d-ad6ac5cfcf4a
 
    #### We've completed a crucial test. As shown in the video above, clicking the left/right 50ms movement on the local PC will activate the PCA9685 driver and servo motor via the Beagle board connected via Ethernet. Now, if we connect a WiFi module to this, we can also activate it on our smartphone.
+
+
+## 3. Wifi module Bring-up
+   ### Hardware
+   #### use : ESP32-DEVKIT-V4 board
+   ![20250826_212224](https://github.com/user-attachments/assets/d11a86c5-587a-4552-80a3-1542bf9c9bc8)
+| ESP32 DEVKIT V4 핀 | BeagleBone Black 핀 | 설명 |
+|------|---|---|
+| VIN (또는 5V)	| P9_05 (VDD_5V) | ESP32에 5V 전원 공급 |
+| GND | P9_01 (DGND) | 공통 접지 연결 (필수) |
+| TXD0 (또는 TX) | P9_11 (UART4_RXD) | ESP32의 송신(TX) -> BBB의 수신(RX) |
+| RXD0 (또는 RX) | P9_13 (UART4_TXD) | ESP32의 수신(RX) -> BBB의 송신(TX) |
+   ### Sofrware
+   #### Test module
+   
