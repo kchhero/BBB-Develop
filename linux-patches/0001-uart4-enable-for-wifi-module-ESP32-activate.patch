@@ -1,0 +1,59 @@
+From f0d7713f89aac8b42b48b42873ce47fea628633a Mon Sep 17 00:00:00 2001
+From: kchhero <kchhero@gmail.com>
+Date: Thu, 28 Aug 2025 13:36:54 +0900
+Subject: [PATCH] uart4 enable for wifi module(ESP32) activate
+
+---
+ arch/arm/boot/dts/am335x-bone-common.dtsi        | 15 +++++++++++++++
+ arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi |  2 +-
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335x-bone-common.dtsi
+index b495c859a7a5..c44a5ad3937e 100644
+--- a/arch/arm/boot/dts/am335x-bone-common.dtsi
++++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
+@@ -95,6 +95,13 @@ AM33XX_PADCONF(AM335X_PIN_UART0_TXD, PIN_OUTPUT_PULLDOWN, MUX_MODE0)
+ 		>;
+ 	};
+ 
++	bb_uart4_pins: pinmux_bb_uart4_pins {
++		pinctrl-single,pins = <
++			AM33XX_PADCONF(AM335X_PIN_GPMC_WPN, PIN_OUTPUT, MUX_MODE6)	/* P9_13 gpmc_wpn.uart4_txd_mux2 */
++			AM33XX_PADCONF(AM335X_PIN_GPMC_WAIT0, PIN_INPUT, MUX_MODE6)	/* P9_13 gpmc_wait0.uart4_rxd_mux2 */
++		>;
++	};
++
+ 	cpsw_default: cpsw-default-pins {
+ 		pinctrl-single,pins = <
+ 			/* Slave 1 */
+@@ -189,6 +196,14 @@ &uart0 {
+ 	symlink = "bone/uart/0";
+ };
+ 
++&uart4 {
++	/* sudo agetty 115200 ttyS4 */
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&bb_uart4_pins>;
++	symlink = "bone/uart/4";
++};
++
+ &usb0 {
+ 	dr_mode = "peripheral";
+ 	interrupts-extended = <&intc 18 &tps 0>;
+diff --git a/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi b/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
+index 9c179f7dbaaf..fdb821492655 100644
+--- a/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
++++ b/arch/arm/boot/dts/am335x-boneblack-ite-hdmi.dtsi
+@@ -76,7 +76,7 @@ AM33XX_PADCONF(AM335X_PIN_GPMC_AD13, PIN_OUTPUT, MUX_MODE7)
+ 			AM33XX_PADCONF(AM335X_PIN_GPMC_AD14, PIN_OUTPUT, MUX_MODE7)
+ 			AM33XX_PADCONF(AM335X_PIN_GPMC_AD15, PIN_OUTPUT, MUX_MODE7)
+ 		>;
+-	};
++	};	
+ };
+ 
+ &lcdc {
+-- 
+2.43.0
+
