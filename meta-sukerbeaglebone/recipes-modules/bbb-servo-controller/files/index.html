@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>BeagleBone 서보 컨트롤러</title>
+    <style>
+        /* 이전 LED 컨트롤러와 유사한 스타일 */
+        body { font-family: sans-serif; text-align: center; }
+       .controller { border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 20px auto; max-width: 300px; }
+        button { padding: 10px; margin: 5px; font-size: 16px; cursor: pointer; width: 100px; }
+        #status { margin-top: 20px; font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>서보 컨트롤러</h1>
+
+    <div class="controller">
+        <h2>채널 3</h2>
+        <button onclick="moveServo(3, 'ccw', 50)">◀ CCW (50ms)</button>
+        <button onclick="moveServo(3, 'cw', 50)">CW (50ms) ▶</button>
+    </div>
+
+    <div class="controller">
+        <h2>채널 11</h2>
+        <button onclick="moveServo(11, 'ccw', 50)">◀ CCW (50ms)</button>
+        <button onclick="moveServo(11, 'cw', 50)">CW (50ms) ▶</button>
+    </div>
+
+    <p id="status">버튼을 눌러 서보모터를 제어하세요.</p>
+
+    <script>
+        async function moveServo(channel, direction, duration) {
+            const statusElement = document.getElementById('status');
+            statusElement.textContent = `채널 ${channel} ${direction} 방향으로 ${duration}ms 이동 요청...`;
+
+            try {
+                const response = await fetch(`/servo/${channel}/${direction}/${duration}`, {
+                    method: 'POST'
+                });
+                statusElement.textContent = await response.text();
+            } catch (error) {
+                statusElement.textContent = `네트워크 오류: ${error}`;
+            }
+        }
+    </script>
+</body>
+</html>

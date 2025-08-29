@@ -31,12 +31,17 @@ IMAGE_INSTALL:append = " \
         i2c-tools \
         evtest \
         udev \
+        minicom \
         "
 
+# IMAGE_INSTALL:append = " \
+#         simplebuttons \
+#         led-control \
+#         led-driver \
+#         "
+
 IMAGE_INSTALL:append = " \
-        simplebuttons \
-        led-control \
-        led-driver \
+        bbb-servo-controller \
         "
 
 # IMAGE_INSTALL:remove = "mesa-pvr"

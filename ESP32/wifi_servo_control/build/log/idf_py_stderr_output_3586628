@@ -1,0 +1,43 @@
+Command: /home/suker/.espressif/python_env/idf6.0_py3.12_env/bin/python /home/suker/tmp/ESP32/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB1 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/wifi_servo_control.elf /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/bootloader/bootloader.elf -m '/home/suker/.espressif/python_env/idf6.0_py3.12_env/bin/python' '/home/suker/tmp/ESP32/esp-idf/tools/idf.py'
+[0;33m--- esp-idf-monitor 1.7.0 on /dev/ttyUSB1 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x40080400: [0;33m_invalid_pc_placeholder[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m2235[0m
+[0m--- 0x40080644: [0;33mcall_start_cpu0[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x400810b4: [0;33mcall_start_cpu1[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_system/port/cpu_start.c[0m[0m:[1;31m206[0m
+[0m--- 0x400d1bb8: [0;33m__esp_system_init_fn_init_efuse_check[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/efuse/src/esp_efuse_startup.c[0m[0m:[1;31m37[0m
+[0m--- 0x400d20ec: [0;33m__esp_system_init_fn_init_show_cpu_freq[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_system/startup_funcs.c[0m[0m:[1;31m64[0m
+[0m--- 0x400d1af8: [0;33m__esp_system_init_fn_init_show_app_info[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_app_format/esp_app_desc.c[0m[0m:[1;31m123[0m
+[0m--- 0x400d1bcc: [0;33m__esp_system_init_fn_init_efuse_show_app_info[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/efuse/src/esp_efuse_startup.c[0m[0m:[1;31m47[0m
+[0m--- 0x400d3b08: [0;33m__esp_system_init_fn_init_heap[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/heap/heap_caps_init.c[0m[0m:[1;31m26[0m
+[0m--- 0x40080000: [0;33m_WindowOverflow4[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m2027[0m
+[0m--- 0x40080000: [0;33m_WindowOverflow4[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m2027[0m
+[0m--- 0x40000000: [0;33m_WindowOverflow4[0m[0m in [0;32mROM[0m
+[0m--- 0x400d5244: [0;33m__esp_system_init_fn_esp_timer_init_nonos[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_timer/src/esp_timer_init.c[0m[0m:[1;31m28[0m
+[0m--- 0x400d4c34: [0;33m__esp_system_init_fn_init_libc[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/newlib/src/init.c[0m[0m:[1;31m12[0m
+[0m--- 0x400d2130: [0;33m__esp_system_init_fn_init_brownout[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_system/startup_funcs.c[0m[0m:[1;31m79[0m
+[0m--- 0x400d2140: [0;33m__esp_system_init_fn_init_newlib_time[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_system/startup_funcs.c[0m[0m:[1;31m104[0m
+[0m--- 0x400d63ac: [0;33m__esp_system_init_fn_init_vfs_uart[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_driver_uart/src/uart_vfs.c[0m[0m:[1;31m1153[0m
+[0m--- 0x400da4e0: [0;33m__esp_system_init_fn_init_vfs_nullfs[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/vfs/nullfs.c[0m[0m:[1;31m322[0m
+[0m--- 0x400d8cc4: [0;33m__esp_system_init_fn_init_vfs_console[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_vfs_console/vfs_console.c[0m[0m:[1;31m263[0m
+[0m--- 0x400d4c40: [0;33m__esp_system_init_fn_init_libc_stdio[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/newlib/src/init.c[0m[0m:[1;31m18[0m
+[0m--- 0x400d214c: [0;33m__esp_system_init_fn_init_flash[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_system/startup_funcs.c[0m[0m:[1;31m111[0m
+[0m--- 0x400d1c58: [0;33m__esp_system_init_fn_init_efuse[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/efuse/src/esp_efuse_startup.c[0m[0m:[1;31m158[0m
+[0m--- 0x40126880: [0;33m__esp_system_init_fn_esp_timer_init_os[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_timer/src/esp_timer.c[0m[0m:[1;31m566[0m
+[0m--- 0x40157a28: [0;33m__esp_system_init_fn_esp_security_init[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_security/src/init.c[0m[0m:[1;31m42[0m
+[0m--- 0x400d217c: [0;33m__esp_system_init_fn_init_disable_rtc_wdt[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_system/startup_funcs.c[0m[0m:[1;31m179[0m
+[0m--- 0x400e1a2c: [0;33mesp_netif_new_api[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c[0m[0m:[1;31m769[0m
+[0m--- 0x400da5dc: [0;33mwifi_event_handler[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/wifi_servo_control/main/wifi_servo_control.c[0m[0m:[1;31m126[0m
+[0m--- 0x400e3e54: [0;33mwifi_default_action_sta_start[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_wifi/src/wifi_default.c[0m[0m:[1;31m78[0m
+[0m--- 0x400e125c: [0;33mesp_netif_set_mac_api[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c[0m[0m:[1;31m1086[0m
+[0m--- 0x400e1c10: [0;33mesp_netif_start_api[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c[0m[0m:[1;31m1161[0m
+[0m--- 0x400da5dc: [0;33mwifi_event_handler[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/wifi_servo_control/main/wifi_servo_control.c[0m[0m:[1;31m126[0m
+[0m--- 0x40110e18: [0;33mcnx_start_handoff_cb[0m[0m at [0;32m??[0m[0m:[1;31m?[0m
+[0m--- 0x400da5dc: [0;33mwifi_event_handler[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/wifi_servo_control/main/wifi_servo_control.c[0m[0m:[1;31m126[0m
+[0m--- 0x400e3e84: [0;33mwifi_default_action_sta_connected[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_wifi/src/wifi_default.c[0m[0m:[1;31m98[0m
+[0m--- 0x400e1e20: [0;33mesp_netif_up_api[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c[0m[0m:[1;31m1808[0m
+[0m--- 0x400e16d0: [0;33mesp_netif_dhcpc_start_api[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c[0m[0m:[1;31m1600[0m
+[0m--- 0x400da5dc: [0;33mwifi_event_handler[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/wifi_servo_control/main/wifi_servo_control.c[0m[0m:[1;31m126[0m
+[0m--- 0x400e21f8: [0;33mesp_netif_update_default_netif_lwip[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_netif/lwip/esp_netif_lwip.c[0m[0m:[1;31m313[0m
+[0m--- 0x400e3ccc: [0;33mwifi_default_action_sta_got_ip[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/components/esp_wifi/src/wifi_default.c[0m[0m:[1;31m162[0m
+[0m--- 0x400da5dc: [0;33mwifi_event_handler[0m[0m at [0;32m/home/suker/tmp/ESP32/esp-idf/wifi_servo_control/main/wifi_servo_control.c[0m[0m:[1;31m126[0m
+[0m

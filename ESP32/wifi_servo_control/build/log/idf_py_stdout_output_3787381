@@ -1,0 +1,1753 @@
+Command: /home/suker/.espressif/python_env/idf6.0_py3.12_env/bin/python /home/suker/tmp/ESP32/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB1 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/wifi_servo_control.elf /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/bootloader/bootloader.elf -m '/home/suker/.espressif/python_env/idf6.0_py3.12_env/bin/python' '/home/suker/tmp/ESP32/esp-idf/tools/idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6376
+load:0x40078000,len:15864
+load:0x40080400,len:3908
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.0-dev-2039-g2044fba6e7 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Aug 29 2025 01:09:56[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=21c78h (138360) map[0m
+[0;32mI (137) esp_image: segment 1: paddr=00031ca0 vaddr=3ffb0000 size=041d4h ( 16852) load[0m
+[0;32mI (144) esp_image: segment 2: paddr=00035e7c vaddr=40080000 size=0a19ch ( 41372) load[0m
+[0;32mI (161) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=94c7ch (609404) map[0m
+[0;32mI (378) esp_image: segment 4: paddr=000d4ca4 vaddr=4008a19c size=0be90h ( 48784) load[0m
+[0;32mI (398) esp_image: segment 5: paddr=000e0b3c vaddr=50000000 size=00024h (    36) load[0m
+[0;32mI (410) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (410) boot: Disabling RNG early entropy source...[0m
+[0;32mI (420) cpu_start: Multicore app[0m
+D (420) cpu_start: Pro cpu up
+D (421) cpu_start: Starting app cpu, entry point is 0x400810b4
+D (0) cpu_start: App cpu up
+D (429) clk: RTC_SLOW_CLK calibration value: 3277325
+[0;32mI (441) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+D (441) cpu_start: calling init function: 0x400d1bb8 on core: 0
+D (443) cpu_start: calling init function: 0x400d20ec on core: 0
+[0;32mI (448) cpu_start: Pro cpu start user code[0m
+[0;32mI (452) cpu_start: cpu freq: 160000000 Hz[0m
+D (456) cpu_start: calling init function: 0x400d1af8 on core: 0
+[0;32mI (461) app_init: Application information:[0m
+[0;32mI (465) app_init: Project name:     wifi_servo_control[0m
+[0;32mI (470) app_init: App version:      v6.0-dev-2039-g2044fba6e7[0m
+[0;32mI (476) app_init: Compile time:     Aug 29 2025 01:10:07[0m
+[0;32mI (481) app_init: ELF file SHA256:  7df7122f3...[0m
+[0;32mI (485) app_init: ESP-IDF:          v6.0-dev-2039-g2044fba6e7[0m
+D (490) cpu_start: calling init function: 0x400d1bcc on core: 0
+[0;32mI (496) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (500) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (504) efuse_init: Chip rev:         v3.1[0m
+D (508) cpu_start: calling init function: 0x400d3b08 on core: 0
+D (514) memory_layout: Checking 9 reserved memory ranges:
+D (518) memory_layout: Reserved memory range 0x3ff82000 - 0x3ff82000
+D (525) memory_layout: Reserved memory range 0x3ffae000 - 0x3ffae6e0
+D (531) memory_layout: Reserved memory range 0x3ffb0000 - 0x3ffb82b8
+D (537) memory_layout: Reserved memory range 0x3ffe0000 - 0x3ffe0440
+D (543) memory_layout: Reserved memory range 0x3ffe3f20 - 0x3ffe4350
+D (549) memory_layout: Reserved memory range 0x40070000 - 0x40078000
+D (555) memory_layout: Reserved memory range 0x40078000 - 0x40080000
+D (561) memory_layout: Reserved memory range 0x40080000 - 0x4009602c
+D (567) memory_layout: Reserved memory range 0x50001fe8 - 0x50002000
+D (573) memory_layout: Building list of available memory regions:
+D (579) memory_layout: Available memory region 0x3ffae6e0 - 0x3ffb0000
+D (585) memory_layout: Available memory region 0x3ffb82b8 - 0x3ffc0000
+D (591) memory_layout: Available memory region 0x3ffc0000 - 0x3ffc2000
+D (598) memory_layout: Available memory region 0x3ffc2000 - 0x3ffc4000
+D (604) memory_layout: Available memory region 0x3ffc4000 - 0x3ffc6000
+D (610) memory_layout: Available memory region 0x3ffc6000 - 0x3ffc8000
+D (616) memory_layout: Available memory region 0x3ffc8000 - 0x3ffca000
+D (623) memory_layout: Available memory region 0x3ffca000 - 0x3ffcc000
+D (629) memory_layout: Available memory region 0x3ffcc000 - 0x3ffce000
+D (635) memory_layout: Available memory region 0x3ffce000 - 0x3ffd0000
+D (641) memory_layout: Available memory region 0x3ffd0000 - 0x3ffd2000
+D (648) memory_layout: Available memory region 0x3ffd2000 - 0x3ffd4000
+D (654) memory_layout: Available memory region 0x3ffd4000 - 0x3ffd6000
+D (660) memory_layout: Available memory region 0x3ffd6000 - 0x3ffd8000
+D (666) memory_layout: Available memory region 0x3ffd8000 - 0x3ffda000
+D (673) memory_layout: Available memory region 0x3ffda000 - 0x3ffdc000
+D (679) memory_layout: Available memory region 0x3ffdc000 - 0x3ffde000
+D (685) memory_layout: Available memory region 0x3ffde000 - 0x3ffe0000
+D (691) memory_layout: Available memory region 0x3ffe0440 - 0x3ffe3f20
+D (698) memory_layout: Available memory region 0x3ffe4350 - 0x3ffe8000
+D (704) memory_layout: Available memory region 0x3ffe8000 - 0x3fff0000
+D (710) memory_layout: Available memory region 0x3fff0000 - 0x3fff8000
+D (716) memory_layout: Available memory region 0x3fff8000 - 0x3fffc000
+D (723) memory_layout: Available memory region 0x3fffc000 - 0x40000000
+D (729) memory_layout: Available memory region 0x4009602c - 0x40098000
+D (735) memory_layout: Available memory region 0x40098000 - 0x4009a000
+D (741) memory_layout: Available memory region 0x4009a000 - 0x4009c000
+D (748) memory_layout: Available memory region 0x4009c000 - 0x4009e000
+D (754) memory_layout: Available memory region 0x4009e000 - 0x400a0000
+[0;32mI (760) heap_init: Initializing. RAM available for dynamic allocation:[0m
+D (767) heap_init: New heap initialised at 0x3ffae6e0
+[0;32mI (771) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+D (776) heap_init: New heap initialised at 0x3ffb82b8
+[0;32mI (781) heap_init: At 3FFB82B8 len 00027D48 (159 KiB): DRAM[0m
+[0;32mI (786) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (792) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+D (797) heap_init: New heap initialised at 0x4009602c
+[0;32mI (802) heap_init: At 4009602C len 00009FD4 (39 KiB): IRAM[0m
+D (807) cpu_start: calling init function: 0x400d5244 on core: 0
+D (813) cpu_start: calling init function: 0x400d4c34 on core: 0
+D (819) cpu_start: calling init function: 0x400d2130 on core: 0
+D (825) intr_alloc: Connected src 46 to int 1 (cpu 0)
+D (829) cpu_start: calling init function: 0x400d2140 on core: 0
+D (835) cpu_start: calling init function: 0x400d63ac on core: 0
+D (840) cpu_start: calling init function: 0x400da4e0 on core: 0
+D (846) cpu_start: calling init function: 0x400d8cc4 on core: 0
+D (852) cpu_start: calling init function: 0x400d4c40 on core: 0
+D (858) cpu_start: calling init function: 0x400d214c on core: 0
+D (863) spi_flash: trying chip: issi
+D (866) spi_flash: trying chip: gd
+D (869) spi_flash: trying chip: mxic
+D (873) spi_flash: trying chip: winbond
+D (876) spi_flash: trying chip: generic
+[0;32mI (880) spi_flash: detected chip: generic[0m
+[0;32mI (883) spi_flash: flash io: dio[0m
+[0;33mW (886) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+D (898) cpu_start: calling init function: 0x400d1c58 on core: 0
+D (905) cpu_start: calling init function: 0x40126880 on core: 0
+D (910) intr_alloc: Connected src 17 to int 2 (cpu 0)
+D (915) cpu_start: calling init function: 0x40157a28 on core: 0
+D (920) cpu_start: calling init function: 0x400d217c on core: 0
+D (926) intr_alloc: Connected src 24 to int 3 (cpu 0)
+D (931) app_start: Starting scheduler on CPU0
+D (935) intr_alloc: Connected src 25 to int 1 (cpu 1)
+D (935) app_start: Starting scheduler on CPU1
+[0;32mI (935) main_task: Started on CPU0[0m
+D (945) heap_init: New heap initialised at 0x3ffe0440
+D (945) heap_init: New heap initialised at 0x3ffe4350
+D (955) intr_alloc: Connected src 16 to int 5 (cpu 0)
+[0;32mI (955) main_task: Calling app_main()[0m
+D (985) intr_alloc: Connected src 36 to int 8 (cpu 0)
+D (985) esp_netif_lwip: LwIP stack has been initialized
+D (985) esp_netif_lwip: esp-netif has been successfully initialized
+D (985) event: running task for loop 0x3ffbd294
+D (985) event: created task for loop 0x3ffbd294
+D (995) event: created event loop 0x3ffbd294
+D (995) esp_netif_lwip: check: remote, if=0x3ffba3b0 fn=0x400e1a2c
+D (1005) esp_netif_objects: esp_netif_add_to_list_unsafe netif added successfully (total netifs: 1)
+D (1015) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (1015) nvs: nvs_open_from_partition misc 1
+[0;32mI (1035) wifi:wifi driver task: 3ffc08c0, prio:23, stack:6656, core=0[0m
+D (1035) efuse: BLK0 REG2 [8-15], len=8 bits
+D (1035) efuse: BLK0 REG2 [0-7], len=8 bits
+D (1035) efuse: BLK0 REG1 [24-31], len=8 bits
+D (1045) efuse: BLK0 REG1 [16-23], len=8 bits
+D (1045) efuse: BLK0 REG1 [8-15], len=8 bits
+D (1045) efuse: BLK0 REG1 [0-7], len=8 bits
+D (1055) efuse: BLK0 REG2 [16-23], len=8 bits
+D (1055) nvs: nvs_open_from_partition nvs.net80211 1
+D (1065) nvs: nvs_get opmode 1
+D (1065) nvs: nvs_get_str_or_blob sta.ssid
+D (1065) nvs: nvs_get sta.authmode 1
+D (1075) nvs: nvs_get_str_or_blob sta.pswd
+D (1075) nvs: nvs_get_str_or_blob sta.pmk
+D (1075) nvs: nvs_get sta.chan 1
+D (1085) nvs: nvs_get auto.conn 1
+D (1085) nvs: nvs_get bssid.set 1
+D (1085) nvs: nvs_get_str_or_blob sta.bssid
+D (1095) nvs: nvs_get sta.lis_intval 2
+D (1095) nvs: nvs_get sta.phym 1
+D (1095) nvs: nvs_get sta.phybw 1
+D (1105) nvs: nvs_get_str_or_blob sta.apsw
+D (1105) nvs: nvs_get_str_or_blob sta.apinfo
+D (1115) nvs: nvs_get sta.scan_method 1
+D (1115) nvs: nvs_get sta.sort_method 1
+D (1115) nvs: nvs_get sta.minrssi 1
+D (1115) nvs: nvs_get sta.minauth 1
+D (1125) nvs: nvs_get sta.pmf_e 1
+D (1125) nvs: nvs_get sta.pmf_r 1
+D (1125) nvs: nvs_get sta.btm_e 1
+D (1135) nvs: nvs_get sta.rrm_e 1
+D (1135) nvs: nvs_get sta.mbo_e 1
+D (1135) nvs: nvs_get_str_or_blob ap.ssid
+D (1145) nvs: nvs_get_str_or_blob ap.passwd
+D (1145) nvs: nvs_get_str_or_blob ap.pmk
+D (1145) nvs: nvs_get ap.chan 1
+D (1155) nvs: nvs_get ap.authmode 1
+D (1155) nvs: nvs_get ap.hidden 1
+D (1155) nvs: nvs_get ap.max.conn 1
+D (1165) nvs: nvs_get bcn.interval 2
+D (1165) nvs: nvs_get ap.phym 1
+D (1165) nvs: nvs_get ap.phybw 1
+D (1175) nvs: nvs_get ap.sndchan 1
+D (1175) nvs: nvs_get ap.pmf_e 1
+D (1175) nvs: nvs_get ap.pmf_r 1
+D (1175) nvs: nvs_get ap.p_cipher 1
+D (1185) nvs: nvs_get lorate 1
+D (1185) nvs: nvs_get_str_or_blob country
+D (1185) nvs: nvs_get ap.ftm_r 1
+D (1195) nvs: nvs_get sta.ft 1
+D (1195) nvs: nvs_get sta.owe 1
+D (1195) nvs: nvs_get sta.trans_d 1
+D (1205) nvs: nvs_get sta.sae_h2e 1
+D (1205) nvs: nvs_get sta.sae_pk_mode 1
+D (1205) nvs: nvs_get sta.bss_retry 1
+D (1215) nvs: nvs_get_str_or_blob sta.owe_data
+D (1215) nvs: nvs_get sta.he_dcm 1
+D (1215) nvs: nvs_get sta.he_dcm_c_tx 1
+D (1225) nvs: nvs_get sta.he_dcm_c_rx 1
+D (1225) nvs: nvs_get sta.he_mcs9_d 1
+D (1225) nvs: nvs_get sta.he_su_b_d 1
+D (1235) nvs: nvs_get sta.he_su_b_f_d 1
+D (1235) nvs: nvs_get sta.he_mu_b_f_d 1
+D (1235) nvs: nvs_get sta.he_cqi_f_d 1
+D (1245) nvs: nvs_get_str_or_blob sta.sae_h2e_id
+D (1245) nvs: nvs_get ap.sae_h2e 1
+D (1255) nvs: nvs_get_str_or_blob ap.pmk_info
+D (1255) nvs: nvs_get nan.phym 1
+D (1255) nvs: nvs_get sta.pwr_reset 1
+D (1265) nvs: nvs_get band_mode 1
+D (1265) nvs: nvs_get sta.phym5g 1
+D (1265) nvs: nvs_get ap.phym5g 1
+D (1265) nvs: nvs_get sta.phybw5g 1
+D (1275) nvs: nvs_get ap.phybw5g 1
+D (1275) nvs: nvs_get ap.sndchan5g 1
+D (1275) nvs: nvs_get ap.chan5g 1
+D (1285) nvs: nvs_get ap.chanisset 1
+D (1285) nvs: nvs_get ap.chan5gisset 1
+D (1285) nvs: nvs_get sta.lowrate 1
+D (1295) nvs: nvs_get ap.lowrate 1
+D (1295) nvs: nvs_get sta.rssi_5g_adj 1
+D (1295) nvs: nvs_get ap.csa_count 1
+D (1305) nvs: nvs_get ap.dtim_period 1
+D (1305) nvs: nvs_get ap.trans_d 1
+D (1305) nvs: nvs_get ap.sae_ext 1
+D (1315) nvs: nvs_get ap.bssmaxidle 2
+D (1315) nvs: nvs_get ap.pro_keep_a 1
+D (1315) nvs: nvs_get ap.gtk_rekey 2
+D (1325) nvs: nvs_get sta.vht_su_b_d 1
+D (1325) nvs: nvs_get sta.vht_mu_b_d 1
+D (1325) nvs: nvs_get sta.vht_mcs8_e 1
+D (1335) nvs: nvs_get sta.ina_time 2
+D (1335) nvs: nvs_get ap.ina_time 2
+D (1335) nvs: nvs_set ap.sndchan 1 1
+[0;32mI (1345) wifi:wifi firmware version: df85326[0m
+[0;32mI (1345) wifi:wifi certification version: v7.0[0m
+[0;32mI (1355) wifi:config NVS flash: enabled[0m
+[0;32mI (1355) wifi:config nano formatting: disabled[0m
+[0;32mI (1355) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1365) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1365) wifi:Init management short buffer num: 32[0m
+[0;32mI (1375) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1375) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1385) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1385) wifi:Init dynamic rx buffer num: 32[0m
+D (1385) wifi:Reset scan defaults in ms : min,max,passive,chan_dwell :(0,120,360,30)
+[0;32mI (1395) wifi_init: rx ba win: 6[0m
+[0;32mI (1395) wifi_init: accept mbox: 6[0m
+[0;32mI (1405) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1405) wifi_init: udp mbox: 6[0m
+[0;32mI (1405) wifi_init: tcp mbox: 6[0m
+[0;32mI (1415) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1415) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1415) wifi_init: tcp mss: 1440[0m
+[0;32mI (1425) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1425) wifi_init: WiFi RX IRAM OP enabled[0m
+D (1425) nvs: nvs_get opmode 1
+D (1435) wifi:clear blacklist
+[0;33mW (1435) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (1445) phy_init: phy_version 4861,b71b5ad,Aug  5 2025,11:16:06[0m
+D (1445) phy_init: loading PHY init data from application binary
+D (1455) nvs: nvs_open_from_partition phy 0
+D (1455) nvs: nvs_get cal_version 4
+D (1465) nvs: nvs_get_str_or_blob cal_mac
+D (1465) efuse: BLK0 REG2 [8-15], len=8 bits
+D (1465) efuse: BLK0 REG2 [0-7], len=8 bits
+D (1475) efuse: BLK0 REG1 [24-31], len=8 bits
+D (1475) efuse: BLK0 REG1 [16-23], len=8 bits
+D (1485) efuse: BLK0 REG1 [8-15], len=8 bits
+D (1485) efuse: BLK0 REG1 [0-7], len=8 bits
+D (1485) efuse: BLK0 REG2 [16-23], len=8 bits
+D (1495) nvs: nvs_get_str_or_blob cal_data
+D (1505) nvs: nvs_close 3
+D (1505) efuse: BLK0 REG2 [8-15], len=8 bits
+D (1505) efuse: BLK0 REG2 [0-7], len=8 bits
+D (1505) efuse: BLK0 REG1 [24-31], len=8 bits
+D (1515) efuse: BLK0 REG1 [16-23], len=8 bits
+D (1515) efuse: BLK0 REG1 [8-15], len=8 bits
+D (1515) efuse: BLK0 REG1 [0-7], len=8 bits
+D (1525) efuse: BLK0 REG2 [16-23], len=8 bits
+D (1595) wifi:filter: set rx policy=0
+[0;32mI (1595) wifi:mode : sta (20:43:a8:d0:67:cc)[0m
+[0;32mI (1595) wifi:enable tsf[0m
+D (1595) wifi:filter: set rx policy=1
+D (1595) wifi:connect status 0 -> 0
+D (1595) event: running post WIFI_EVENT:43 with handler 0x400da5dc and context 0x3ffc6eac on loop 0x3ffbd294
+D (1605) event: running post WIFI_EVENT:2 with handler 0x400e3e54 and context 0x3ffbe3f0 on loop 0x3ffbd294
+D (1615) wifi_init_default: wifi_start esp-netif:0x3ffbe1d4 event-id2
+D (1625) wifi_init_default: WIFI mac address: 20 43 a8 d0 67 cc
+D (1625) esp_netif_lwip: check: remote, if=0x3ffbe1d4 fn=0x400e125c
+[0;32mI (1635) ESP32_WEB_SERVER: wifi_init_sta finished.[0m
+D (1635) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (1645) esp_netif_handlers: esp_netif action has started with netif0x3ffbe1d4 from event_id=2
+D (1655) esp_netif_lwip: check: remote, if=0x3ffbe1d4 fn=0x400e1c10
+D (1655) esp_netif_lwip: esp_netif_start_api 0x3ffbe1d4
+[0;32mI (1655) main_task: Returned from app_main()[0m
+D (1665) esp_netif_lwip: esp_netif_get_hostname esp_netif:0x3ffbe1d4
+D (1675) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (1675) event: running post WIFI_EVENT:2 with handler 0x400da5dc and context 0x3ffc6eac on loop 0x3ffbd294
+D (1685) wifi:Start wifi connect
+D (1695) wifi:connect status 0 -> 0
+D (1695) wifi:connect chan=0
+D (1695) wifi:first chan=4
+D (1695) wifi:connect status 0 -> 1
+D (1705) wifi:filter: set rx policy=3
+D (1705) wifi:clear scan ap list
+D (1705) wifi:start scan: type=0x50f, priority=2, cb=0x40110e18, arg=0x0, ss_state=0x1, time=119021, index=0
+D (1715) wifi:perform scan: ss_state=0x9, chan<4,0>, dur<0,120>
+D (1735) wifi:rsn valid: gcipher=3 ucipher=3 akm=5 mac=80:ca:4b:2c:ff:2e
+D (1735) wifi:profile match: ss_state=0x7
+D (1735) wifi:scan end: arg=0x3ffb6884, status=0, ss_state=0x7
+D (1735) wifi:find first mathched ssid, scan done
+D (1745) wifi:filter: set rx policy=4
+D (1745) wifi:first chan=1
+D (1745) wifi:handoff_cb: status=0
+D (1755) wifi:ap found, mac=80:ca:4b:2c:ff:2e
+D (1755) wifi:going for connection with bssid=80:ca:4b:2c:ff:2e
+D (1765) wifi:new_bss=0x3ffb5600, cur_bss=0x0, new_chan=<4,0>, cur_chan=1
+D (1765) wifi:filter: set rx policy=5
+[0;32mI (1775) wifi:new:<4,0>, old:<1,0>, ap:<255,255>, sta:<4,0>, prof:1, snd_ch_cfg:0x0[0m
+D (1785) wifi:connect_op: status=0, auth=5, cipher=3 
+D (1785) wifi:auth mode is not none
+D (1785) wifi:connect_bss: auth=1, reconnect=0
+[0;32mI (1795) wifi:state: init -> auth (0xb0)[0m
+D (1795) nvs: nvs_get sta.pwr_reset 1
+D (1805) wifi:start 1000ms AUTH timer
+D (1805) wifi:clear scan ap list
+D (1805) event: running post WIFI_EVENT:43 with handler 0x400da5dc and context 0x3ffc6eac on loop 0x3ffbd294
+D (1805) wifi:recv auth: seq=2, status=0, algo=0
+[0;32mI (1815) wifi:state: auth -> assoc (0x0)[0m
+D (1825) nvs: nvs_get sta.pwr_reset 1
+D (1825) wifi:restart connect 1000ms timer for assoc
+D (1835) wifi:recv assoc: type=0x10
+D (1835) wifi:filter: set rx policy=6
+[0;32mI (1835) wifi:state: assoc -> run (0x10)[0m
+D (1845) nvs: nvs_get sta.pwr_reset 1
+D (1845) wifi:start 10s connect timer for 4 way handshake
+[0;32mI (1865) wifi:connected with U+NetFF2C, aid = 6, channel 4, BW20, bssid = 80:ca:4b:2c:ff:2e[0m
+[0;32mI (1865) wifi:security: WPA2-PSK, phy: bgn, rssi: -50[0m
+D (1865) wifi:remove all except 80:ca:4b:2c:ff:2e from rc list
+D (1875) wifi:clear blacklist
+D (1875) nvs: nvs_set sta.chan 1 4
+D (1875) nvs: nvs_set_blob sta.apinfo 700
+D (1885) wifi:filter: set rx policy=7
+[0;32mI (1885) wifi:pm start, type: 1[0m
+
+[0;32mI (1885) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+D (1895) wifi:Send sta connected event
+D (1895) wifi:connect status 1 -> 5
+D (1905) wifi:obss scan is disabled
+D (1905) wifi:start obss scan: obss scan is stopped
+D (1905) event: running post WIFI_EVENT:4 with handler 0x400e3e84 and context 0x3ffbe450 on loop 0x3ffbd294
+D (1915) esp_netif_handlers: esp_netif action connected with netif0x3ffbe1d4 from event_id=4
+D (1925) esp_netif_lwip: check: remote, if=0x3ffbe1d4 fn=0x400e1e20
+D (1935) esp_netif_lwip: esp_netif_up_api esp_netif:0x3ffbe1d4
+D (1935) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (1945) esp_netif_lwip: check: remote, if=0x3ffbe1d4 fn=0x400e16d0
+D (1945) esp_netif_lwip: esp_netif_dhcpc_start_api esp_netif:0x3ffbe1d4
+D (1945) wifi:D (1955) esp_netif_lwip: esp_netif_start_ip_lost_timer esp_netif:0x3ffbe1d4
+bcnd: 0 -> 3008
+D (1965) esp_netif_lwip: if0x3ffbe1d4 start ip lost tmr: interval=120
+[0;32mI (1965) wifi:D (1975) esp_netif_lwip: starting dhcp client[0m
+AP's beacon interval = 102400 us, DTIM period = 3
+D (1975) esp_netif_lwip: call api in lwip: ret=0x0, give sem
+D (1985) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (1995) event: running post WIFI_EVENT:4 with handler 0x400da5dc and context 0x3ffc6eac on loop 0x3ffbd294
+[0;32mI (1995) wifi:<ba-add>idx:0 (ifx:0, 80:ca:4b:2c:ff:2e), tid:4, ssn:0, winSize:64[0m
+D (2005) wifi:eb is dhcp or dns sport = 68, dport = 67
+D (3015) esp_netif_lwip: esp_netif_internal_dhcpc_cb lwip-netif:0x3ffbe264
+D (3015) esp_netif_lwip: check: local, if=0x3ffbe1d4 fn=0x400e21f8
+D (3015) esp_netif_lwip: esp_netif_update_default_netif_lwip 0x3ffbe1d4
+D (3015) esp_netif_lwip: if0x3ffbe1d4 ip changed=1
+D (3025) event: running post IP_EVENT:0 with handler 0x400e3ccc and context 0x3ffbe524 on loop 0x3ffbd294
+D (3035) wifi_init_default: Got IP wifi default handler entered
+D (3035) esp_netif_handlers: esp_netif action got_ip with netif0x3ffbe1d4 from event_id=0
+[0;32mI (3045) esp_netif_handlers: sta ip: 192.168.123.121, mask: 255.255.255.0, gw: 192.168.123.1[0m
+D (3055) event: running post IP_EVENT:0 with handler 0x400da5dc and context 0x3ffc6ecc on loop 0x3ffbd294
+[0;32mI (3065) ESP32_WEB_SERVER: Got IP address: 192.168.123.121[0m
+[0;32mI (3065) ESP32_WEB_SERVER: Starting server on port: '80'[0m
+D (3075) httpd: httpd_thread: web server started
+D (3075) httpd_uri: httpd_register_uri_handler: [0] installed /
+D (3075) httpd: httpd_server: doing select maxfd+1 = 56
+D (3085) httpd_uri: httpd_find_uri_handler: [0] = /
+D (3095) httpd_uri: httpd_register_uri_handler: [0] exists /
+D (3095) httpd_uri: httpd_register_uri_handler: [1] installed /
+D (3105) httpd_uri: httpd_find_uri_handler: [0] = /
+D (3105) httpd_uri: httpd_find_uri_handler: [1] = /
+D (3115) httpd_uri: httpd_register_uri_handler: [0] exists /
+D (3115) httpd_uri: httpd_register_uri_handler: [1] exists /
+D (3125) httpd_uri: httpd_register_uri_handler: [2] installed /api/servo
+D (3135) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:1 posted to loop 0x3ffbd294
+D (5735) wifi:bcnd: 3008 -> 3016
+[0;32mI (5985) wifi:<ba-add>idx:1 (ifx:0, 80:ca:4b:2c:ff:2e), tid:0, ssn:0, winSize:64[0m
+D (6045) wifi:bcnd: 3016 -> 3008
+D (6665) httpd: httpd_server: processing listen socket 54
+D (6665) httpd: httpd_accept_conn: newfd = 57
+D (6665) httpd_sess: httpd_sess_new: fd = 57
+D (6665) httpd_sess: httpd_sess_new: active sockets: 1
+D (6675) httpd: httpd_accept_conn: complete
+D (6675) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (6675) httpd: httpd_server: doing select maxfd+1 = 58
+D (6695) httpd: httpd_process_session: processing socket 57
+D (6695) httpd_sess: httpd_sess_process: httpd_req_new
+D (6705) httpd_parse: scratch buf qsize = 128
+D (6705) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (6715) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (6715) httpd_parse: read_block: received HTTP request block size = 128
+D (6725) httpd_parse: cb_url: message begin
+D (6725) httpd_parse: cb_url: processing url = /api/servo
+D (6735) httpd_parse: verify_url: received URI = /api/servo
+D (6735) httpd_parse: cb_header_field: headers begin
+D (6745) httpd_txrx: httpd_unrecv: length = 102
+D (6745) httpd_parse: pause_parsing: paused
+D (6755) httpd_parse: cb_header_field: processing field = Host
+D (6755) httpd_parse: scratch buf qsize = 128
+D (6765) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (6765) httpd_txrx: httpd_recv_with_opt: pending length = 102
+D (6775) httpd_parse: read_block: received HTTP request block size = 102
+D (6775) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (6785) httpd_parse: continue_parsing: un-paused
+D (6795) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (6795) httpd_parse: cb_header_field: processing field = Connection
+D (6805) httpd_parse: cb_header_value: processing value = keep-alive
+D (6805) httpd_parse: cb_header_field: processing field = Content-Length
+D (6815) httpd_parse: cb_header_value: processing value = 25
+D (6825) httpd_parse: cb_header_field: processing field = User-Agent
+D (6825) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; And
+D (6835) httpd_parse: parse_block: parsed block size = 102
+D (6835) httpd_parse: scratch buf qsize = 230
+D (6845) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (6845) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (6855) httpd_parse: read_block: received HTTP request block size = 128
+D (6865) httpd_parse: cb_header_value: processing value = roid 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (6875) httpd_parse: cb_header_field: processing field = Content-Type
+D (6885) httpd_parse: cb_header_value: processing value = application/json
+D (6885) httpd_parse: cb_header_field: processing field = Accept
+D (6895) httpd_parse: parse_block: parsed block size = 230
+D (6895) httpd_parse: scratch buf qsize = 358
+D (6905) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (6905) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (6915) httpd_parse: read_block: received HTTP request block size = 128
+D (6915) httpd_parse: cb_header_field: processing field = 
+D (6925) httpd_parse: cb_header_value: processing value = */*
+D (6935) httpd_parse: cb_header_field: processing field = Origin
+D (6935) httpd_parse: cb_header_value: processing value = http://192.168.123.121
+D (6945) httpd_parse: cb_header_field: processing field = Referer
+D (6945) httpd_parse: cb_header_value: processing value = http://192.168.123.121/
+D (6955) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (6965) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (6965) httpd_parse: cb_header_field: processing field = Accept-Language
+D (6975) httpd_parse: cb_header_value: processing value = ko-KR,
+D (6985) httpd_parse: parse_block: parsed block size = 358
+D (6985) httpd_parse: scratch buf qsize = 486
+D (6995) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (6995) httpd_txrx: httpd_recv_with_opt: received length = 58
+D (7005) httpd_parse: read_block: received HTTP request block size = 58
+D (7005) httpd_parse: cb_header_value: processing value = ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (7015) httpd_parse: cb_headers_complete: bytes read     = 420
+D (7025) httpd_parse: cb_headers_complete: content length = 25
+D (7025) httpd_txrx: httpd_unrecv: length = 25
+D (7025) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (7035) httpd_parse: pause_parsing: paused
+D (7045) httpd_parse: cb_on_body: body begins
+D (7045) httpd_parse: httpd_parse_req: parsing complete
+D (7055) httpd_uri: httpd_uri: request for /api/servo with type 3
+D (7055) httpd_uri: httpd_find_uri_handler: [0] = /
+D (7065) httpd_uri: httpd_find_uri_handler: [1] = /
+D (7065) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+[0;33mW (7075) httpd_uri: httpd_uri: Method '3' not allowed for URI '/api/servo'[0m
+[0;33mW (7085) httpd_txrx: httpd_resp_send_err: 405 Method Not Allowed - Specified method is invalid for this resource[0m
+D (7095) httpd_txrx: httpd send buffer size = 78
+D (7095) httpd_txrx: httpd_send_all: sent = 78
+D (7105) httpd_txrx: httpd_send_all: sent = 2
+D (7105) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:4 posted to loop 0x3ffbd294
+D (7105) httpd_txrx: httpd_send_all: sent = 45
+D (7115) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:6 posted to loop 0x3ffbd294
+D (7125) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:0 posted to loop 0x3ffbd294
+D (7115) httpd_sess: httpd_sess_delete: fd = 57
+D (7145) httpd_sess: httpd_sess_delete: active sockets: 0
+D (7145) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (7145) httpd: httpd_server: doing select maxfd+1 = 56
+D (9435) httpd: httpd_server: processing listen socket 54
+D (9435) httpd: httpd_accept_conn: newfd = 57
+D (9435) httpd_sess: httpd_sess_new: fd = 57
+D (9435) httpd_sess: httpd_sess_new: active sockets: 1
+D (9435) httpd: httpd_accept_conn: complete
+D (9445) httpd: httpd_server: doing select maxfd+1 = 58
+D (9445) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (9445) httpd: httpd_process_session: processing socket 57
+D (9465) httpd_sess: httpd_sess_process: httpd_req_new
+D (9465) httpd_parse: scratch buf qsize = 128
+D (9475) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (9475) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (9485) httpd_parse: read_block: received HTTP request block size = 128
+D (9495) httpd_parse: cb_url: message begin
+D (9495) httpd_parse: cb_url: processing url = /api/servo
+D (9495) httpd_parse: verify_url: received URI = /api/servo
+D (9505) httpd_parse: cb_header_field: headers begin
+D (9505) httpd_txrx: httpd_unrecv: length = 102
+D (9515) httpd_parse: pause_parsing: paused
+D (9515) httpd_parse: cb_header_field: processing field = Host
+D (9525) httpd_parse: scratch buf qsize = 128
+D (9525) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (9535) httpd_txrx: httpd_recv_with_opt: pending length = 102
+D (9535) httpd_parse: read_block: received HTTP request block size = 102
+D (9545) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (9555) httpd_parse: continue_parsing: un-paused
+D (9555) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (9565) httpd_parse: cb_header_field: processing field = Connection
+D (9565) httpd_parse: cb_header_value: processing value = keep-alive
+D (9575) httpd_parse: cb_header_field: processing field = Content-Length
+D (9585) httpd_parse: cb_header_value: processing value = 25
+D (9585) httpd_parse: cb_header_field: processing field = User-Agent
+D (9595) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; And
+D (9595) httpd_parse: parse_block: parsed block size = 102
+D (9605) httpd_parse: scratch buf qsize = 230
+D (9605) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (9615) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (9615) httpd_parse: read_block: received HTTP request block size = 128
+D (9625) httpd_parse: cb_header_value: processing value = roid 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (9635) httpd_parse: cb_header_field: processing field = Content-Type
+D (9645) httpd_parse: cb_header_value: processing value = application/json
+D (9655) httpd_parse: cb_header_field: processing field = Accept
+D (9655) httpd_parse: parse_block: parsed block size = 230
+D (9665) httpd_parse: scratch buf qsize = 358
+D (9665) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (9675) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (9675) httpd_parse: read_block: received HTTP request block size = 128
+D (9685) httpd_parse: cb_header_field: processing field = 
+D (9695) httpd_parse: cb_header_value: processing value = */*
+D (9695) httpd_parse: cb_header_field: processing field = Origin
+D (9705) httpd_parse: cb_header_value: processing value = http://192.168.123.121
+D (9705) httpd_parse: cb_header_field: processing field = Referer
+D (9715) httpd_parse: cb_header_value: processing value = http://192.168.123.121/
+D (9725) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (9725) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (9735) httpd_parse: cb_header_field: processing field = Accept-Language
+D (9745) httpd_parse: cb_header_value: processing value = ko-KR,
+D (9745) httpd_parse: parse_block: parsed block size = 358
+D (9755) httpd_parse: scratch buf qsize = 486
+D (9755) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (9765) httpd_txrx: httpd_recv_with_opt: received length = 58
+D (9765) httpd_parse: read_block: received HTTP request block size = 58
+D (9775) httpd_parse: cb_header_value: processing value = ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (9785) httpd_parse: cb_headers_complete: bytes read     = 420
+D (9785) httpd_parse: cb_headers_complete: content length = 25
+D (9795) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (9795) httpd_txrx: httpd_unrecv: length = 25
+D (9805) httpd_parse: pause_parsing: paused
+D (9805) httpd_parse: cb_on_body: body begins
+D (9815) httpd_parse: httpd_parse_req: parsing complete
+D (9815) httpd_uri: httpd_uri: request for /api/servo with type 3
+D (9825) httpd_uri: httpd_find_uri_handler: [0] = /
+D (9825) httpd_uri: httpd_find_uri_handler: [1] = /
+D (9835) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+[0;33mW (9835) httpd_uri: httpd_uri: Method '3' not allowed for URI '/api/servo'[0m
+[0;33mW (9845) httpd_txrx: httpd_resp_send_err: 405 Method Not Allowed - Specified method is invalid for this resource[0m
+D (9855) httpd_txrx: httpd send buffer size = 78
+D (9865) httpd_txrx: httpd_send_all: sent = 78
+D (9865) httpd_txrx: httpd_send_all: sent = 2
+D (9865) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:4 posted to loop 0x3ffbd294
+D (9865) httpd_txrx: httpd_send_all: sent = 45
+D (9885) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:6 posted to loop 0x3ffbd294
+D (9885) httpd_sess: httpd_sess_delete: fd = 57
+D (9895) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:0 posted to loop 0x3ffbd294
+D (9895) httpd_sess: httpd_sess_delete: active sockets: 0
+D (9905) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (9915) httpd: httpd_server: doing select maxfd+1 = 56
+D (9925) httpd: httpd_server: processing listen socket 54
+D (9935) httpd: httpd_accept_conn: newfd = 57
+D (9935) httpd_sess: httpd_sess_new: fd = 57
+D (9935) httpd_sess: httpd_sess_new: active sockets: 1
+D (9945) httpd: httpd_accept_conn: complete
+D (9945) httpd: httpd_server: doing select maxfd+1 = 58
+D (9945) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (9955) httpd: httpd_process_session: processing socket 57
+D (9965) httpd_sess: httpd_sess_process: httpd_req_new
+D (9975) httpd_parse: scratch buf qsize = 128
+D (9975) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (9985) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (9985) httpd_parse: read_block: received HTTP request block size = 128
+D (9995) httpd_parse: cb_url: message begin
+D (9995) httpd_parse: cb_url: processing url = /api/servo
+D (10005) httpd_parse: verify_url: received URI = /api/servo
+D (10005) httpd_parse: cb_header_field: headers begin
+D (10015) httpd_txrx: httpd_unrecv: length = 102
+D (10015) httpd_parse: pause_parsing: paused
+D (10025) httpd_parse: cb_header_field: processing field = Host
+D (10025) httpd_parse: scratch buf qsize = 128
+D (10035) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (10035) httpd_txrx: httpd_recv_with_opt: pending length = 102
+D (10045) httpd_parse: read_block: received HTTP request block size = 102
+D (10045) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (10055) httpd_parse: continue_parsing: un-paused
+D (10065) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (10065) httpd_parse: cb_header_field: processing field = Connection
+D (10075) httpd_parse: cb_header_value: processing value = keep-alive
+D (10075) httpd_parse: cb_header_field: processing field = Content-Length
+D (10085) httpd_parse: cb_header_value: processing value = 25
+D (10095) httpd_parse: cb_header_field: processing field = User-Agent
+D (10095) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; And
+D (10105) httpd_parse: parse_block: parsed block size = 102
+D (10105) httpd_parse: scratch buf qsize = 230
+D (10115) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (10115) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (10125) httpd_parse: read_block: received HTTP request block size = 128
+D (10135) httpd_parse: cb_header_value: processing value = roid 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (10145) httpd_parse: cb_header_field: processing field = Content-Type
+D (10155) httpd_parse: cb_header_value: processing value = application/json
+D (10155) httpd_parse: cb_header_field: processing field = Accept
+D (10165) httpd_parse: parse_block: parsed block size = 230
+D (10165) httpd_parse: scratch buf qsize = 358
+D (10175) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (10175) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (10185) httpd_parse: read_block: received HTTP request block size = 128
+D (10195) httpd_parse: cb_header_field: processing field = 
+D (10195) httpd_parse: cb_header_value: processing value = */*
+D (10205) httpd_parse: cb_header_field: processing field = Origin
+D (10205) httpd_parse: cb_header_value: processing value = http://192.168.123.121
+D (10215) httpd_parse: cb_header_field: processing field = Referer
+D (10225) httpd_parse: cb_header_value: processing value = http://192.168.123.121/
+D (10225) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (10235) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (10245) httpd_parse: cb_header_field: processing field = Accept-Language
+D (10245) httpd_parse: cb_header_value: processing value = ko-KR,
+D (10255) httpd_parse: parse_block: parsed block size = 358
+D (10255) httpd_parse: scratch buf qsize = 486
+D (10265) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (10265) httpd_txrx: httpd_recv_with_opt: received length = 58
+D (10275) httpd_parse: read_block: received HTTP request block size = 58
+D (10285) httpd_parse: cb_header_value: processing value = ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (10285) httpd_parse: cb_headers_complete: bytes read     = 420
+D (10295) httpd_parse: cb_headers_complete: content length = 25
+D (10305) httpd_txrx: httpd_unrecv: length = 25
+D (10305) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (10305) httpd_parse: pause_parsing: paused
+D (10315) httpd_parse: cb_on_body: body begins
+D (10325) httpd_parse: httpd_parse_req: parsing complete
+D (10325) httpd_uri: httpd_uri: request for /api/servo with type 3
+D (10335) httpd_uri: httpd_find_uri_handler: [0] = /
+D (10335) httpd_uri: httpd_find_uri_handler: [1] = /
+D (10345) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+[0;33mW (10345) httpd_uri: httpd_uri: Method '3' not allowed for URI '/api/servo'[0m
+[0;33mW (10355) httpd_txrx: httpd_resp_send_err: 405 Method Not Allowed - Specified method is invalid for this resource[0m
+D (10365) httpd_txrx: httpd send buffer size = 78
+D (10375) httpd_txrx: httpd_send_all: sent = 78
+D (10375) httpd_txrx: httpd_send_all: sent = 2
+D (10375) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:4 posted to loop 0x3ffbd294
+D (10375) httpd_txrx: httpd_send_all: sent = 45
+D (10395) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:6 posted to loop 0x3ffbd294
+D (10395) httpd_sess: httpd_sess_delete: fd = 57
+D (10405) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:0 posted to loop 0x3ffbd294
+D (10405) httpd_sess: httpd_sess_delete: active sockets: 0
+D (10415) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (10425) httpd: httpd_server: doing select maxfd+1 = 56
+D (12205) httpd: httpd_server: processing listen socket 54
+D (12215) httpd: httpd_accept_conn: newfd = 57
+D (12215) httpd_sess: httpd_sess_new: fd = 57
+D (12215) httpd_sess: httpd_sess_new: active sockets: 1
+D (12215) httpd: httpd_accept_conn: complete
+D (12225) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (12225) httpd: httpd_server: doing select maxfd+1 = 58
+D (12235) httpd: httpd_process_session: processing socket 57
+D (12245) httpd_sess: httpd_sess_process: httpd_req_new
+D (12245) httpd_parse: scratch buf qsize = 128
+D (12255) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12255) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (12265) httpd_parse: read_block: received HTTP request block size = 128
+D (12265) httpd_parse: cb_url: message begin
+D (12275) httpd_parse: cb_url: processing url = /api/servo
+D (12275) httpd_parse: verify_url: received URI = /api/servo
+D (12285) httpd_parse: cb_header_field: headers begin
+D (12285) httpd_txrx: httpd_unrecv: length = 102
+D (12295) httpd_parse: pause_parsing: paused
+D (12295) httpd_parse: cb_header_field: processing field = Host
+D (12305) httpd_parse: scratch buf qsize = 128
+D (12305) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12315) httpd_txrx: httpd_recv_with_opt: pending length = 102
+D (12315) httpd_parse: read_block: received HTTP request block size = 102
+D (12325) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (12335) httpd_parse: continue_parsing: un-paused
+D (12335) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (12345) httpd_parse: cb_header_field: processing field = Connection
+D (12345) httpd_parse: cb_header_value: processing value = keep-alive
+D (12355) httpd_parse: cb_header_field: processing field = Content-Length
+D (12365) httpd_parse: cb_header_value: processing value = 25
+D (12365) httpd_parse: cb_header_field: processing field = User-Agent
+D (12375) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; And
+D (12375) httpd_parse: parse_block: parsed block size = 102
+D (12385) httpd_parse: scratch buf qsize = 230
+D (12385) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12395) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (12395) httpd_parse: read_block: received HTTP request block size = 128
+D (12405) httpd_parse: cb_header_value: processing value = roid 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (12415) httpd_parse: cb_header_field: processing field = Content-Type
+D (12425) httpd_parse: cb_header_value: processing value = application/json
+D (12435) httpd_parse: cb_header_field: processing field = Accept
+D (12435) httpd_parse: parse_block: parsed block size = 230
+D (12445) httpd_parse: scratch buf qsize = 358
+D (12445) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12455) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (12455) httpd_parse: read_block: received HTTP request block size = 128
+D (12465) httpd_parse: cb_header_field: processing field = 
+D (12475) httpd_parse: cb_header_value: processing value = */*
+D (12475) httpd_parse: cb_header_field: processing field = Origin
+D (12485) httpd_parse: cb_header_value: processing value = http://192.168.123.121
+D (12485) httpd_parse: cb_header_field: processing field = Referer
+D (12495) httpd_parse: cb_header_value: processing value = http://192.168.123.121/
+D (12505) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (12505) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (12515) httpd_parse: cb_header_field: processing field = Accept-Language
+D (12525) httpd_parse: cb_header_value: processing value = ko-KR,
+D (12525) httpd_parse: parse_block: parsed block size = 358
+D (12535) httpd_parse: scratch buf qsize = 486
+D (12535) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12545) httpd_txrx: httpd_recv_with_opt: received length = 58
+D (12545) httpd_parse: read_block: received HTTP request block size = 58
+D (12555) httpd_parse: cb_header_value: processing value = ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (12565) httpd_parse: cb_headers_complete: bytes read     = 420
+D (12565) httpd_parse: cb_headers_complete: content length = 25
+D (12575) httpd_txrx: httpd_unrecv: length = 25
+D (12575) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (12575) httpd_parse: pause_parsing: paused
+D (12595) httpd_parse: cb_on_body: body begins
+D (12595) httpd_parse: httpd_parse_req: parsing complete
+D (12605) httpd_uri: httpd_uri: request for /api/servo with type 3
+D (12605) httpd_uri: httpd_find_uri_handler: [0] = /
+D (12615) httpd_uri: httpd_find_uri_handler: [1] = /
+D (12615) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+[0;33mW (12625) httpd_uri: httpd_uri: Method '3' not allowed for URI '/api/servo'[0m
+[0;33mW (12625) httpd_txrx: httpd_resp_send_err: 405 Method Not Allowed - Specified method is invalid for this resource[0m
+D (12645) httpd_txrx: httpd send buffer size = 78
+D (12645) httpd_txrx: httpd_send_all: sent = 78
+D (12645) httpd_txrx: httpd_send_all: sent = 2
+D (12655) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:4 posted to loop 0x3ffbd294
+D (12655) httpd_txrx: httpd_send_all: sent = 45
+D (12665) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:6 posted to loop 0x3ffbd294
+D (12665) httpd_sess: httpd_sess_delete: fd = 57
+D (12675) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:0 posted to loop 0x3ffbd294
+D (12685) httpd_sess: httpd_sess_delete: active sockets: 0
+D (12685) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (12695) httpd: httpd_server: processing listen socket 54
+D (12715) httpd: httpd_accept_conn: newfd = 57
+D (12715) httpd_sess: httpd_sess_new: fd = 57
+D (12715) httpd_sess: httpd_sess_new: active sockets: 1
+D (12725) httpd: httpd_accept_conn: complete
+D (12725) httpd: httpd_server: doing select maxfd+1 = 58
+D (12735) httpd: httpd_process_session: processing socket 57
+D (12725) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (12735) httpd_sess: httpd_sess_process: httpd_req_new
+D (12755) httpd_parse: scratch buf qsize = 128
+D (12755) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12765) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (12765) httpd_parse: read_block: received HTTP request block size = 128
+D (12775) httpd_parse: cb_url: message begin
+D (12775) httpd_parse: cb_url: processing url = /api/servo
+D (12785) httpd_parse: verify_url: received URI = /api/servo
+D (12785) httpd_parse: cb_header_field: headers begin
+D (12795) httpd_txrx: httpd_unrecv: length = 102
+D (12795) httpd_parse: pause_parsing: paused
+D (12805) httpd_parse: cb_header_field: processing field = Host
+D (12805) httpd_parse: scratch buf qsize = 128
+D (12815) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12815) httpd_txrx: httpd_recv_with_opt: pending length = 102
+D (12825) httpd_parse: read_block: received HTTP request block size = 102
+D (12825) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (12835) httpd_parse: continue_parsing: un-paused
+D (12845) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (12845) httpd_parse: cb_header_field: processing field = Connection
+D (12855) httpd_parse: cb_header_value: processing value = keep-alive
+D (12855) httpd_parse: cb_header_field: processing field = Content-Length
+D (12865) httpd_parse: cb_header_value: processing value = 24
+D (12875) httpd_parse: cb_header_field: processing field = User-Agent
+D (12875) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; And
+D (12885) httpd_parse: parse_block: parsed block size = 102
+D (12895) httpd_parse: scratch buf qsize = 230
+D (12895) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12905) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (12905) httpd_parse: read_block: received HTTP request block size = 128
+D (12915) httpd_parse: cb_header_value: processing value = roid 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (12925) httpd_parse: cb_header_field: processing field = Content-Type
+D (12935) httpd_parse: cb_header_value: processing value = application/json
+D (12935) httpd_parse: cb_header_field: processing field = Accept
+D (12945) httpd_parse: parse_block: parsed block size = 230
+D (12945) httpd_parse: scratch buf qsize = 358
+D (12955) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (12955) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (12965) httpd_parse: read_block: received HTTP request block size = 128
+D (12975) httpd_parse: cb_header_field: processing field = 
+D (12975) httpd_parse: cb_header_value: processing value = */*
+D (12985) httpd_parse: cb_header_field: processing field = Origin
+D (12985) httpd_parse: cb_header_value: processing value = http://192.168.123.121
+D (12995) httpd_parse: cb_header_field: processing field = Referer
+D (13005) httpd_parse: cb_header_value: processing value = http://192.168.123.121/
+D (13005) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (13015) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (13025) httpd_parse: cb_header_field: processing field = Accept-Language
+D (13025) httpd_parse: cb_header_value: processing value = ko-KR,
+D (13035) httpd_parse: parse_block: parsed block size = 358
+D (13035) httpd_parse: scratch buf qsize = 486
+D (13045) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (13045) httpd_txrx: httpd_recv_with_opt: received length = 57
+D (13055) httpd_parse: read_block: received HTTP request block size = 57
+D (13065) httpd_parse: cb_header_value: processing value = ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (13065) httpd_parse: cb_headers_complete: bytes read     = 420
+D (13075) httpd_parse: cb_headers_complete: content length = 24
+D (13085) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (13085) httpd_txrx: httpd_unrecv: length = 24
+D (13095) httpd_parse: pause_parsing: paused
+D (13095) httpd_parse: cb_on_body: body begins
+D (13105) httpd_parse: httpd_parse_req: parsing complete
+D (13105) httpd_uri: httpd_uri: request for /api/servo with type 3
+D (13115) httpd_uri: httpd_find_uri_handler: [0] = /
+D (13115) httpd_uri: httpd_find_uri_handler: [1] = /
+D (13125) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+[0;33mW (13125) httpd_uri: httpd_uri: Method '3' not allowed for URI '/api/servo'[0m
+[0;33mW (13135) httpd_txrx: httpd_resp_send_err: 405 Method Not Allowed - Specified method is invalid for this resource[0m
+D (13145) httpd_txrx: httpd send buffer size = 78
+D (13155) httpd_txrx: httpd_send_all: sent = 78
+D (13155) httpd_txrx: httpd_send_all: sent = 2
+D (13155) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:4 posted to loop 0x3ffbd294
+D (13155) httpd_txrx: httpd_send_all: sent = 45
+D (13175) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:6 posted to loop 0x3ffbd294
+D (13175) httpd_sess: httpd_sess_delete: fd = 57
+D (13185) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:0 posted to loop 0x3ffbd294
+D (13185) httpd_sess: httpd_sess_delete: active sockets: 0
+D (13195) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (13205) httpd: httpd_server: processing listen socket 54
+D (13215) httpd: httpd_accept_conn: newfd = 57
+D (13225) httpd_sess: httpd_sess_new: fd = 57
+D (13225) httpd_sess: httpd_sess_new: active sockets: 1
+D (13225) httpd: httpd_accept_conn: complete
+D (13235) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (13235) httpd: httpd_server: doing select maxfd+1 = 58
+D (32155) wifi:bcnd: 3008 -> 3016
+D (34005) wifi:bcnd: 3016 -> 3008
+D (38305) httpd: httpd_process_session: processing socket 57
+D (38305) httpd_sess: httpd_sess_process: httpd_req_new
+D (38305) httpd_parse: scratch buf qsize = 128
+D (38315) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (38315) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (38325) httpd_parse: read_block: received HTTP request block size = 128
+D (38335) httpd_parse: cb_url: message begin
+D (38335) httpd_parse: cb_url: processing url = /api/servo
+D (38345) httpd_parse: verify_url: received URI = /api/servo
+D (38345) httpd_parse: cb_header_field: headers begin
+D (38355) httpd_txrx: httpd_unrecv: length = 103
+D (38355) httpd_parse: pause_parsing: paused
+D (38355) httpd_parse: cb_header_field: processing field = Host
+D (38365) httpd_parse: scratch buf qsize = 128
+D (38365) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (38375) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (38385) httpd_parse: read_block: received HTTP request block size = 103
+D (38385) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (38395) httpd_parse: continue_parsing: un-paused
+D (38395) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (38405) httpd_parse: cb_header_field: processing field = Connection
+D (38415) httpd_parse: cb_header_value: processing value = keep-alive
+D (38415) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (38425) httpd_parse: cb_header_value: processing value = 1
+D (38435) httpd_parse: cb_header_field: processing field = User-Agent
+D (38435) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (L
+D (38445) httpd_parse: parse_block: parsed block size = 103
+D (38445) httpd_parse: scratch buf qsize = 231
+D (38455) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (38455) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (38465) httpd_parse: read_block: received HTTP request block size = 128
+D (38475) httpd_parse: cb_header_value: processing value = inux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (38485) httpd_parse: cb_header_field: processing field = Accept
+D (38485) httpd_parse: cb_header_value: processing value = text/html,application
+D (38495) httpd_parse: parse_block: parsed block size = 231
+D (38505) httpd_parse: scratch buf qsize = 359
+D (38505) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (38515) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (38515) httpd_parse: read_block: received HTTP request block size = 128
+D (38525) httpd_parse: cb_header_value: processing value = /xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+D (38535) httpd_parse: cb_header_field: processing field = Accept-Encod
+D (38545) httpd_parse: parse_block: parsed block size = 359
+D (38555) httpd_parse: scratch buf qsize = 487
+D (38555) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (38565) httpd_txrx: httpd_recv_with_opt: received length = 76
+D (38565) httpd_parse: read_block: received HTTP request block size = 76
+D (38575) httpd_parse: cb_header_field: processing field = ing
+D (38575) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (38585) httpd_parse: cb_header_field: processing field = Accept-Language
+D (38595) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (38605) httpd_parse: cb_headers_complete: bytes read     = 463
+D (38605) httpd_parse: cb_headers_complete: content length = 0
+D (38615) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (38615) httpd_parse: pause_parsing: paused
+D (38625) httpd_parse: cb_no_body: message complete
+D (38625) httpd_parse: httpd_parse_req: parsing complete
+D (38635) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (38645) httpd_uri: httpd_find_uri_handler: [0] = /
+D (38645) httpd_uri: httpd_find_uri_handler: [1] = /
+D (38645) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (38655) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (38665) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (38665) httpd_sess: httpd_sess_delete: fd = 57
+D (38675) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (38675) httpd_sess: httpd_sess_delete: active sockets: 0
+D (38685) httpd: httpd_server: doing select maxfd+1 = 56
+D (38695) httpd: httpd_server: processing listen socket 54
+D (38695) httpd: httpd_accept_conn: newfd = 57
+D (38695) httpd_sess: httpd_sess_new: fd = 57
+D (38705) httpd_sess: httpd_sess_new: active sockets: 1
+D (38705) httpd: httpd_accept_conn: complete
+D (38715) httpd: httpd_server: doing select maxfd+1 = 58
+D (38715) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (38925) httpd: httpd_process_session: processing socket 57
+D (38925) httpd_sess: httpd_sess_process: httpd_req_new
+D (38925) httpd_parse: scratch buf qsize = 128
+D (38925) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (38935) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (38945) httpd_parse: read_block: received HTTP request block size = 128
+D (38945) httpd_parse: cb_url: message begin
+D (38955) httpd_parse: cb_url: processing url = /api/servo
+D (38955) httpd_parse: verify_url: received URI = /api/servo
+D (38965) httpd_parse: cb_header_field: headers begin
+D (38965) httpd_txrx: httpd_unrecv: length = 103
+D (38975) httpd_parse: pause_parsing: paused
+D (38975) httpd_parse: cb_header_field: processing field = Host
+D (38985) httpd_parse: scratch buf qsize = 128
+D (38985) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (38995) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (38995) httpd_parse: read_block: received HTTP request block size = 103
+D (39005) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (39005) httpd_parse: continue_parsing: un-paused
+D (39015) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (39025) httpd_parse: cb_header_field: processing field = Connection
+D (39025) httpd_parse: cb_header_value: processing value = keep-alive
+D (39035) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (39035) httpd_parse: cb_header_value: processing value = 1
+D (39045) httpd_parse: cb_header_field: processing field = User-Agent
+D (39055) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (L
+D (39055) httpd_parse: parse_block: parsed block size = 103
+D (39065) httpd_parse: scratch buf qsize = 231
+D (39065) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (39075) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (39075) httpd_parse: read_block: received HTTP request block size = 128
+D (39085) httpd_parse: cb_header_value: processing value = inux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (39095) httpd_parse: cb_header_field: processing field = Accept
+D (39105) httpd_parse: cb_header_value: processing value = text/html,application
+D (39115) httpd_parse: parse_block: parsed block size = 231
+D (39115) httpd_parse: scratch buf qsize = 359
+D (39125) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (39125) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (39135) httpd_parse: read_block: received HTTP request block size = 128
+D (39135) httpd_parse: cb_header_value: processing value = /xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+D (39155) httpd_parse: cb_header_field: processing field = Accept-Encod
+D (39165) httpd_parse: parse_block: parsed block size = 359
+D (39165) httpd_parse: scratch buf qsize = 487
+D (39175) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (39175) httpd_txrx: httpd_recv_with_opt: received length = 76
+D (39185) httpd_parse: read_block: received HTTP request block size = 76
+D (39185) httpd_parse: cb_header_field: processing field = ing
+D (39195) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (39205) httpd_parse: cb_header_field: processing field = Accept-Language
+D (39205) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (39215) httpd_parse: cb_headers_complete: bytes read     = 463
+D (39225) httpd_parse: cb_headers_complete: content length = 0
+D (39225) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (39225) httpd_parse: pause_parsing: paused
+D (39245) httpd_parse: cb_no_body: message complete
+D (39245) httpd_parse: httpd_parse_req: parsing complete
+D (39245) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (39255) httpd_uri: httpd_find_uri_handler: [0] = /
+D (39265) httpd_uri: httpd_find_uri_handler: [1] = /
+D (39265) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (39275) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (39275) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (39285) httpd_sess: httpd_sess_delete: fd = 57
+D (39285) httpd_sess: httpd_sess_delete: active sockets: 0
+D (39285) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (39295) httpd: httpd_server: doing select maxfd+1 = 56
+D (39845) httpd: httpd_server: processing listen socket 54
+D (39845) httpd: httpd_accept_conn: newfd = 57
+D (39845) httpd_sess: httpd_sess_new: fd = 57
+D (39845) httpd_sess: httpd_sess_new: active sockets: 1
+D (39855) httpd: httpd_accept_conn: complete
+D (39855) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (39855) httpd: httpd_server: doing select maxfd+1 = 58
+D (39875) httpd: httpd_process_session: processing socket 57
+D (39875) httpd_sess: httpd_sess_process: httpd_req_new
+D (39885) httpd_parse: scratch buf qsize = 128
+D (39885) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (39895) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (39895) httpd_parse: read_block: received HTTP request block size = 128
+D (39905) httpd_parse: cb_url: message begin
+D (39905) httpd_parse: cb_url: processing url = /api/servo
+D (39915) httpd_parse: verify_url: received URI = /api/servo
+D (39915) httpd_parse: cb_header_field: headers begin
+D (39925) httpd_txrx: httpd_unrecv: length = 103
+D (39925) httpd_parse: pause_parsing: paused
+D (39935) httpd_parse: cb_header_field: processing field = Host
+D (39935) httpd_parse: scratch buf qsize = 128
+D (39945) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (39945) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (39955) httpd_parse: read_block: received HTTP request block size = 103
+D (39955) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (39965) httpd_parse: continue_parsing: un-paused
+D (39975) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (39975) httpd_parse: cb_header_field: processing field = Connection
+D (39985) httpd_parse: cb_header_value: processing value = keep-alive
+D (39985) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (39995) httpd_parse: cb_header_value: processing value = 1
+D (40005) httpd_parse: cb_header_field: processing field = User-Agent
+D (40005) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (L
+D (40015) httpd_parse: parse_block: parsed block size = 103
+D (40025) httpd_parse: scratch buf qsize = 231
+D (40025) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (40035) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (40035) httpd_parse: read_block: received HTTP request block size = 128
+D (40045) httpd_parse: cb_header_value: processing value = inux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (40055) httpd_parse: cb_header_field: processing field = Accept
+D (40065) httpd_parse: cb_header_value: processing value = text/html,application
+D (40065) httpd_parse: parse_block: parsed block size = 231
+D (40075) httpd_parse: scratch buf qsize = 359
+D (40075) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (40085) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (40085) httpd_parse: read_block: received HTTP request block size = 128
+D (40095) httpd_parse: cb_header_value: processing value = /xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+D (40115) httpd_parse: cb_header_field: processing field = Accept-Encod
+D (40115) httpd_parse: parse_block: parsed block size = 359
+D (40125) httpd_parse: scratch buf qsize = 487
+D (40125) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (40135) httpd_txrx: httpd_recv_with_opt: received length = 76
+D (40145) httpd_parse: read_block: received HTTP request block size = 76
+D (40145) httpd_parse: cb_header_field: processing field = ing
+D (40155) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (40155) httpd_parse: cb_header_field: processing field = Accept-Language
+D (40165) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (40175) httpd_parse: cb_headers_complete: bytes read     = 463
+D (40175) httpd_parse: cb_headers_complete: content length = 0
+D (40185) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (40185) httpd_parse: pause_parsing: paused
+D (40195) httpd_parse: cb_no_body: message complete
+D (40205) httpd_parse: httpd_parse_req: parsing complete
+D (40205) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (40215) httpd_uri: httpd_find_uri_handler: [0] = /
+D (40215) httpd_uri: httpd_find_uri_handler: [1] = /
+D (40225) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (40225) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (40235) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (40235) httpd_sess: httpd_sess_delete: fd = 57
+D (40245) httpd_sess: httpd_sess_delete: active sockets: 0
+D (40245) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (40245) httpd: httpd_server: doing select maxfd+1 = 56
+D (40265) httpd: httpd_server: processing listen socket 54
+D (40265) httpd: httpd_accept_conn: newfd = 57
+D (40275) httpd_sess: httpd_sess_new: fd = 57
+D (40275) httpd_sess: httpd_sess_new: active sockets: 1
+D (40285) httpd: httpd_accept_conn: complete
+D (40285) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (40285) httpd: httpd_server: doing select maxfd+1 = 58
+D (41685) httpd: httpd_process_session: processing socket 57
+D (41685) httpd_sess: httpd_sess_process: httpd_req_new
+D (41685) httpd_parse: scratch buf qsize = 128
+D (41695) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (41695) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (41705) httpd_parse: read_block: received HTTP request block size = 128
+D (41705) httpd_parse: cb_url: message begin
+D (41715) httpd_parse: cb_url: processing url = /api/servo
+D (41715) httpd_parse: verify_url: received URI = /api/servo
+D (41725) httpd_parse: cb_header_field: headers begin
+D (41725) httpd_txrx: httpd_unrecv: length = 103
+D (41735) httpd_parse: pause_parsing: paused
+D (41735) httpd_parse: cb_header_field: processing field = Host
+D (41745) httpd_parse: scratch buf qsize = 128
+D (41745) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (41755) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (41755) httpd_parse: read_block: received HTTP request block size = 103
+D (41765) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (41775) httpd_parse: continue_parsing: un-paused
+D (41775) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (41785) httpd_parse: cb_header_field: processing field = Connection
+D (41785) httpd_parse: cb_header_value: processing value = keep-alive
+D (41795) httpd_parse: cb_header_field: processing field = Cache-Control
+D (41805) httpd_parse: cb_header_value: processing value = max-age=0
+D (41805) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (41815) httpd_parse: cb_header_value: processing value = 1
+D (41815) httpd_parse: parse_block: parsed block size = 103
+D (41825) httpd_parse: scratch buf qsize = 231
+D (41825) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (41835) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (41845) httpd_parse: read_block: received HTTP request block size = 128
+D (41845) httpd_parse: cb_header_field: processing field = User-Agent
+D (41855) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (41865) httpd_parse: cb_header_field: processing field = Acc
+D (41875) httpd_parse: parse_block: parsed block size = 231
+D (41875) httpd_parse: scratch buf qsize = 359
+D (41885) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (41885) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (41895) httpd_parse: read_block: received HTTP request block size = 128
+D (41905) httpd_parse: cb_header_field: processing field = ept
+D (41905) httpd_parse: cb_header_value: processing value = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchang
+D (41925) httpd_parse: parse_block: parsed block size = 359
+D (41925) httpd_parse: scratch buf qsize = 487
+D (41935) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (41935) httpd_txrx: httpd_recv_with_opt: received length = 102
+D (41945) httpd_parse: read_block: received HTTP request block size = 102
+D (41955) httpd_parse: cb_header_value: processing value = e;v=b3;q=0.7
+D (41955) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (41965) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (41965) httpd_parse: cb_header_field: processing field = Accept-Language
+D (41975) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (41985) httpd_parse: cb_headers_complete: bytes read     = 488
+D (41995) httpd_parse: cb_headers_complete: content length = 0
+D (41995) httpd_parse: pause_parsing: paused
+D (41995) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (42005) httpd_parse: cb_no_body: message complete
+D (42015) httpd_parse: httpd_parse_req: parsing complete
+D (42015) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (42025) httpd_uri: httpd_find_uri_handler: [0] = /
+D (42025) httpd_uri: httpd_find_uri_handler: [1] = /
+D (42035) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (42045) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (42045) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (42055) httpd_sess: httpd_sess_delete: fd = 57
+D (42055) httpd_sess: httpd_sess_delete: active sockets: 0
+D (42055) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (42065) httpd: httpd_server: doing select maxfd+1 = 56
+D (42075) httpd: httpd_server: processing listen socket 54
+D (42085) httpd: httpd_accept_conn: newfd = 57
+D (42085) httpd_sess: httpd_sess_new: fd = 57
+D (42085) httpd_sess: httpd_sess_new: active sockets: 1
+D (42095) httpd: httpd_accept_conn: complete
+D (42095) httpd: httpd_server: doing select maxfd+1 = 58
+D (42095) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (42305) httpd: httpd_process_session: processing socket 57
+D (42305) httpd_sess: httpd_sess_process: httpd_req_new
+D (42305) httpd_parse: scratch buf qsize = 128
+D (42305) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (42315) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (42315) httpd_parse: read_block: received HTTP request block size = 128
+D (42325) httpd_parse: cb_url: message begin
+D (42335) httpd_parse: cb_url: processing url = /api/servo
+D (42335) httpd_parse: verify_url: received URI = /api/servo
+D (42345) httpd_parse: cb_header_field: headers begin
+D (42345) httpd_txrx: httpd_unrecv: length = 103
+D (42345) httpd_parse: pause_parsing: paused
+D (42355) httpd_parse: cb_header_field: processing field = Host
+D (42355) httpd_parse: scratch buf qsize = 128
+D (42365) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (42365) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (42375) httpd_parse: read_block: received HTTP request block size = 103
+D (42385) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (42385) httpd_parse: continue_parsing: un-paused
+D (42395) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (42395) httpd_parse: cb_header_field: processing field = Connection
+D (42405) httpd_parse: cb_header_value: processing value = keep-alive
+D (42415) httpd_parse: cb_header_field: processing field = Cache-Control
+D (42415) httpd_parse: cb_header_value: processing value = max-age=0
+D (42425) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (42435) httpd_parse: cb_header_value: processing value = 1
+D (42435) httpd_parse: parse_block: parsed block size = 103
+D (42445) httpd_parse: scratch buf qsize = 231
+D (42445) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (42455) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (42455) httpd_parse: read_block: received HTTP request block size = 128
+D (42465) httpd_parse: cb_header_field: processing field = User-Agent
+D (42475) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (42485) httpd_parse: cb_header_field: processing field = Acc
+D (42495) httpd_parse: parse_block: parsed block size = 231
+D (42495) httpd_parse: scratch buf qsize = 359
+D (42505) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (42505) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (42515) httpd_parse: read_block: received HTTP request block size = 128
+D (42515) httpd_parse: cb_header_field: processing field = ept
+D (42525) httpd_parse: cb_header_value: processing value = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchang
+D (42545) httpd_parse: parse_block: parsed block size = 359
+D (42545) httpd_parse: scratch buf qsize = 487
+D (42545) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (42555) httpd_txrx: httpd_recv_with_opt: received length = 102
+D (42565) httpd_parse: read_block: received HTTP request block size = 102
+D (42565) httpd_parse: cb_header_value: processing value = e;v=b3;q=0.7
+D (42575) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (42585) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (42585) httpd_parse: cb_header_field: processing field = Accept-Language
+D (42595) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (42605) httpd_parse: cb_headers_complete: bytes read     = 488
+D (42605) httpd_parse: cb_headers_complete: content length = 0
+D (42615) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (42615) httpd_parse: pause_parsing: paused
+D (42625) httpd_parse: cb_no_body: message complete
+D (42635) httpd_parse: httpd_parse_req: parsing complete
+D (42635) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (42645) httpd_uri: httpd_find_uri_handler: [0] = /
+D (42645) httpd_uri: httpd_find_uri_handler: [1] = /
+D (42655) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (42655) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (42665) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (42665) httpd_sess: httpd_sess_delete: fd = 57
+D (42675) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (42675) httpd_sess: httpd_sess_delete: active sockets: 0
+D (42685) httpd: httpd_server: doing select maxfd+1 = 56
+D (43225) httpd: httpd_server: processing listen socket 54
+D (43225) httpd: httpd_accept_conn: newfd = 57
+D (43225) httpd_sess: httpd_sess_new: fd = 57
+D (43225) httpd_sess: httpd_sess_new: active sockets: 1
+D (43235) httpd: httpd_accept_conn: complete
+D (43235) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (43235) httpd: httpd_server: doing select maxfd+1 = 58
+D (43255) httpd: httpd_process_session: processing socket 57
+D (43255) httpd_sess: httpd_sess_process: httpd_req_new
+D (43265) httpd_parse: scratch buf qsize = 128
+D (43265) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (43275) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (43275) httpd_parse: read_block: received HTTP request block size = 128
+D (43285) httpd_parse: cb_url: message begin
+D (43285) httpd_parse: cb_url: processing url = /api/servo
+D (43295) httpd_parse: verify_url: received URI = /api/servo
+D (43295) httpd_parse: cb_header_field: headers begin
+D (43305) httpd_txrx: httpd_unrecv: length = 103
+D (43305) httpd_parse: pause_parsing: paused
+D (43315) httpd_parse: cb_header_field: processing field = Host
+D (43315) httpd_parse: scratch buf qsize = 128
+D (43325) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (43325) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (43335) httpd_parse: read_block: received HTTP request block size = 103
+D (43335) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (43345) httpd_parse: continue_parsing: un-paused
+D (43345) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (43355) httpd_parse: cb_header_field: processing field = Connection
+D (43365) httpd_parse: cb_header_value: processing value = keep-alive
+D (43365) httpd_parse: cb_header_field: processing field = Cache-Control
+D (43375) httpd_parse: cb_header_value: processing value = max-age=0
+D (43385) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (43385) httpd_parse: cb_header_value: processing value = 1
+D (43395) httpd_parse: parse_block: parsed block size = 103
+D (43395) httpd_parse: scratch buf qsize = 231
+D (43405) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (43405) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (43415) httpd_parse: read_block: received HTTP request block size = 128
+D (43425) httpd_parse: cb_header_field: processing field = User-Agent
+D (43425) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (43445) httpd_parse: cb_header_field: processing field = Acc
+D (43445) httpd_parse: parse_block: parsed block size = 231
+D (43455) httpd_parse: scratch buf qsize = 359
+D (43455) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (43465) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (43465) httpd_parse: read_block: received HTTP request block size = 128
+D (43475) httpd_parse: cb_header_field: processing field = ept
+D (43485) httpd_parse: cb_header_value: processing value = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchang
+D (43495) httpd_parse: parse_block: parsed block size = 359
+D (43505) httpd_parse: scratch buf qsize = 487
+D (43505) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (43515) httpd_txrx: httpd_recv_with_opt: received length = 102
+D (43515) httpd_parse: read_block: received HTTP request block size = 102
+D (43525) httpd_parse: cb_header_value: processing value = e;v=b3;q=0.7
+D (43535) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (43535) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (43545) httpd_parse: cb_header_field: processing field = Accept-Language
+D (43555) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (43555) httpd_parse: cb_headers_complete: bytes read     = 488
+D (43565) httpd_parse: cb_headers_complete: content length = 0
+D (43575) httpd_parse: pause_parsing: paused
+D (43575) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (43575) httpd_parse: cb_no_body: message complete
+D (43585) httpd_parse: httpd_parse_req: parsing complete
+D (43595) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (43595) httpd_uri: httpd_find_uri_handler: [0] = /
+D (43605) httpd_uri: httpd_find_uri_handler: [1] = /
+D (43605) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (43615) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (43615) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (43625) httpd_sess: httpd_sess_delete: fd = 57
+D (43635) httpd_sess: httpd_sess_delete: active sockets: 0
+D (43635) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (43635) httpd: httpd_server: doing select maxfd+1 = 56
+D (43645) httpd: httpd_server: processing listen socket 54
+D (43655) httpd: httpd_accept_conn: newfd = 57
+D (43655) httpd_sess: httpd_sess_new: fd = 57
+D (43665) httpd_sess: httpd_sess_new: active sockets: 1
+D (43665) httpd: httpd_accept_conn: complete
+D (43675) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (43675) httpd: httpd_server: doing select maxfd+1 = 58
+D (49055) httpd: httpd_process_session: processing socket 57
+D (49055) httpd_sess: httpd_sess_process: httpd_req_new
+D (49065) httpd_parse: scratch buf qsize = 128
+D (49065) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49065) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (49075) httpd_parse: read_block: received HTTP request block size = 128
+D (49085) httpd_parse: cb_url: message begin
+D (49085) httpd_parse: cb_url: processing url = /api/servo
+D (49095) httpd_parse: verify_url: received URI = /api/servo
+D (49095) httpd_parse: cb_header_field: headers begin
+D (49105) httpd_txrx: httpd_unrecv: length = 103
+D (49105) httpd_parse: pause_parsing: paused
+D (49105) httpd_parse: cb_header_field: processing field = Host
+D (49115) httpd_parse: scratch buf qsize = 128
+D (49115) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49125) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (49135) httpd_parse: read_block: received HTTP request block size = 103
+D (49135) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (49145) httpd_parse: continue_parsing: un-paused
+D (49145) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (49155) httpd_parse: cb_header_field: processing field = Connection
+D (49165) httpd_parse: cb_header_value: processing value = keep-alive
+D (49165) httpd_parse: cb_header_field: processing field = Cache-Control
+D (49175) httpd_parse: cb_header_value: processing value = max-age=0
+D (49175) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (49185) httpd_parse: cb_header_value: processing value = 1
+D (49195) httpd_parse: parse_block: parsed block size = 103
+D (49195) httpd_parse: scratch buf qsize = 231
+D (49205) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49205) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (49215) httpd_parse: read_block: received HTTP request block size = 128
+D (49215) httpd_parse: cb_header_field: processing field = User-Agent
+D (49225) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (49245) httpd_parse: cb_header_field: processing field = Acc
+D (49245) httpd_parse: parse_block: parsed block size = 231
+D (49255) httpd_parse: scratch buf qsize = 359
+D (49255) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49265) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (49265) httpd_parse: read_block: received HTTP request block size = 128
+D (49275) httpd_parse: cb_header_field: processing field = ept
+D (49275) httpd_parse: cb_header_value: processing value = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchang
+D (49295) httpd_parse: parse_block: parsed block size = 359
+D (49305) httpd_parse: scratch buf qsize = 487
+D (49305) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49315) httpd_txrx: httpd_recv_with_opt: received length = 102
+D (49315) httpd_parse: read_block: received HTTP request block size = 102
+D (49325) httpd_parse: cb_header_value: processing value = e;v=b3;q=0.7
+D (49325) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (49335) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (49345) httpd_parse: cb_header_field: processing field = Accept-Language
+D (49345) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (49355) httpd_parse: cb_headers_complete: bytes read     = 488
+D (49365) httpd_parse: cb_headers_complete: content length = 0
+D (49365) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (49365) httpd_parse: pause_parsing: paused
+D (49385) httpd_parse: cb_no_body: message complete
+D (49385) httpd_parse: httpd_parse_req: parsing complete
+D (49395) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (49395) httpd_uri: httpd_find_uri_handler: [0] = /
+D (49405) httpd_uri: httpd_find_uri_handler: [1] = /
+D (49405) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (49415) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (49415) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (49425) httpd_sess: httpd_sess_delete: fd = 57
+D (49425) httpd_sess: httpd_sess_delete: active sockets: 0
+D (49435) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (49435) httpd: httpd_server: doing select maxfd+1 = 56
+D (49445) httpd: httpd_server: processing listen socket 54
+D (49455) httpd: httpd_accept_conn: newfd = 57
+D (49455) httpd_sess: httpd_sess_new: fd = 57
+D (49465) httpd_sess: httpd_sess_new: active sockets: 1
+D (49465) httpd: httpd_accept_conn: complete
+D (49465) httpd: httpd_server: doing select maxfd+1 = 58
+D (49465) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (49485) httpd: httpd_process_session: processing socket 57
+D (49485) httpd_sess: httpd_sess_process: httpd_req_new
+D (49495) httpd_parse: scratch buf qsize = 128
+D (49495) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49505) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (49515) httpd_parse: read_block: received HTTP request block size = 128
+D (49515) httpd_parse: cb_url: message begin
+D (49525) httpd_parse: cb_url: processing url = /api/servo
+D (49525) httpd_parse: verify_url: received URI = /api/servo
+D (49535) httpd_parse: cb_header_field: headers begin
+D (49535) httpd_txrx: httpd_unrecv: length = 103
+D (49545) httpd_parse: pause_parsing: paused
+D (49545) httpd_parse: cb_header_field: processing field = Host
+D (49555) httpd_parse: scratch buf qsize = 128
+D (49555) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49555) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (49565) httpd_parse: read_block: received HTTP request block size = 103
+D (49575) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (49575) httpd_parse: continue_parsing: un-paused
+D (49585) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (49585) httpd_parse: cb_header_field: processing field = Connection
+D (49595) httpd_parse: cb_header_value: processing value = keep-alive
+D (49605) httpd_parse: cb_header_field: processing field = Cache-Control
+D (49605) httpd_parse: cb_header_value: processing value = max-age=0
+D (49615) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (49625) httpd_parse: cb_header_value: processing value = 1
+D (49625) httpd_parse: parse_block: parsed block size = 103
+D (49635) httpd_parse: scratch buf qsize = 231
+D (49635) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49645) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (49645) httpd_parse: read_block: received HTTP request block size = 128
+D (49655) httpd_parse: cb_header_field: processing field = User-Agent
+D (49665) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (49675) httpd_parse: cb_header_field: processing field = Acc
+D (49685) httpd_parse: parse_block: parsed block size = 231
+D (49685) httpd_parse: scratch buf qsize = 359
+D (49695) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49695) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (49705) httpd_parse: read_block: received HTTP request block size = 128
+D (49705) httpd_parse: cb_header_field: processing field = ept
+D (49715) httpd_parse: cb_header_value: processing value = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchang
+D (49735) httpd_parse: parse_block: parsed block size = 359
+D (49735) httpd_parse: scratch buf qsize = 487
+D (49745) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (49745) httpd_txrx: httpd_recv_with_opt: received length = 102
+D (49755) httpd_parse: read_block: received HTTP request block size = 102
+D (49755) httpd_parse: cb_header_value: processing value = e;v=b3;q=0.7
+D (49765) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (49775) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (49775) httpd_parse: cb_header_field: processing field = Accept-Language
+D (49785) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (49795) httpd_parse: cb_headers_complete: bytes read     = 488
+D (49795) httpd_parse: cb_headers_complete: content length = 0
+D (49805) httpd_parse: pause_parsing: paused
+D (49805) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (49805) httpd_parse: cb_no_body: message complete
+D (49825) httpd_parse: httpd_parse_req: parsing complete
+D (49825) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (49835) httpd_uri: httpd_find_uri_handler: [0] = /
+D (49835) httpd_uri: httpd_find_uri_handler: [1] = /
+D (49845) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (49845) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (49855) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (49855) httpd_sess: httpd_sess_delete: fd = 57
+D (49865) httpd_sess: httpd_sess_delete: active sockets: 0
+D (49865) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (49865) httpd: httpd_server: doing select maxfd+1 = 56
+D (50295) httpd: httpd_server: processing listen socket 54
+D (50305) httpd: httpd_accept_conn: newfd = 57
+D (50305) httpd_sess: httpd_sess_new: fd = 57
+D (50305) httpd_sess: httpd_sess_new: active sockets: 1
+D (50305) httpd: httpd_accept_conn: complete
+D (50315) httpd: httpd_server: doing select maxfd+1 = 58
+D (50315) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (50315) httpd: httpd_process_session: processing socket 57
+D (50335) httpd_sess: httpd_sess_process: httpd_req_new
+D (50335) httpd_parse: scratch buf qsize = 128
+D (50345) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (50345) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (50355) httpd_parse: read_block: received HTTP request block size = 128
+D (50355) httpd_parse: cb_url: message begin
+D (50365) httpd_parse: cb_url: processing url = /api/servo
+D (50365) httpd_parse: verify_url: received URI = /api/servo
+D (50375) httpd_parse: cb_header_field: headers begin
+D (50375) httpd_txrx: httpd_unrecv: length = 103
+D (50385) httpd_parse: pause_parsing: paused
+D (50385) httpd_parse: cb_header_field: processing field = Host
+D (50395) httpd_parse: scratch buf qsize = 128
+D (50395) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (50405) httpd_txrx: httpd_recv_with_opt: pending length = 103
+D (50405) httpd_parse: read_block: received HTTP request block size = 103
+D (50415) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (50425) httpd_parse: continue_parsing: un-paused
+D (50425) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (50435) httpd_parse: cb_header_field: processing field = Connection
+D (50435) httpd_parse: cb_header_value: processing value = keep-alive
+D (50445) httpd_parse: cb_header_field: processing field = Cache-Control
+D (50455) httpd_parse: cb_header_value: processing value = max-age=0
+D (50455) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (50465) httpd_parse: cb_header_value: processing value = 1
+D (50465) httpd_parse: parse_block: parsed block size = 103
+D (50475) httpd_parse: scratch buf qsize = 231
+D (50475) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (50485) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (50495) httpd_parse: read_block: received HTTP request block size = 128
+D (50495) httpd_parse: cb_header_field: processing field = User-Agent
+D (50505) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (50515) httpd_parse: cb_header_field: processing field = Acc
+D (50525) httpd_parse: parse_block: parsed block size = 231
+D (50525) httpd_parse: scratch buf qsize = 359
+D (50535) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (50535) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (50545) httpd_parse: read_block: received HTTP request block size = 128
+D (50555) httpd_parse: cb_header_field: processing field = ept
+D (50555) httpd_parse: cb_header_value: processing value = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchang
+D (50575) httpd_parse: parse_block: parsed block size = 359
+D (50575) httpd_parse: scratch buf qsize = 487
+D (50585) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (50585) httpd_txrx: httpd_recv_with_opt: received length = 102
+D (50595) httpd_parse: read_block: received HTTP request block size = 102
+D (50605) httpd_parse: cb_header_value: processing value = e;v=b3;q=0.7
+D (50605) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (50615) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (50615) httpd_parse: cb_header_field: processing field = Accept-Language
+D (50625) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (50635) httpd_parse: cb_headers_complete: bytes read     = 488
+D (50635) httpd_parse: cb_headers_complete: content length = 0
+D (50645) httpd_parse: pause_parsing: paused
+D (50645) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (50645) httpd_parse: cb_no_body: message complete
+D (50665) httpd_parse: httpd_parse_req: parsing complete
+D (50665) httpd_uri: httpd_uri: request for /api/servo with type 1
+D (50675) httpd_uri: httpd_find_uri_handler: [0] = /
+D (50675) httpd_uri: httpd_find_uri_handler: [1] = /
+D (50685) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+D (50685) httpd_txrx: httpd_req_recv: remaining length = 0
+[0;33mW (50695) httpd_uri: httpd_uri: uri handler execution failed[0m
+D (50705) httpd_sess: httpd_sess_delete: fd = 57
+D (50705) httpd_sess: httpd_sess_delete: active sockets: 0
+D (50705) httpd: httpd_server: processing listen socket 54
+D (50705) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (50715) httpd: httpd_accept_conn: newfd = 57
+D (50725) httpd_sess: httpd_sess_new: fd = 57
+D (50735) httpd_sess: httpd_sess_new: active sockets: 1
+D (50735) httpd: httpd_accept_conn: complete
+D (50745) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (50745) httpd: httpd_server: doing select maxfd+1 = 58
+D (55815) httpd: httpd_process_session: processing socket 57
+D (55815) httpd_sess: httpd_sess_process: httpd_req_new
+D (55815) httpd_parse: scratch buf qsize = 128
+D (55825) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (55825) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (55835) httpd_parse: read_block: received HTTP request block size = 128
+D (55835) httpd_parse: cb_url: message begin
+D (55845) httpd_parse: cb_url: processing url = /
+D (55845) httpd_parse: verify_url: received URI = /
+D (55855) httpd_parse: cb_header_field: headers begin
+D (55855) httpd_txrx: httpd_unrecv: length = 112
+D (55865) httpd_parse: pause_parsing: paused
+D (55865) httpd_parse: cb_header_field: processing field = Host
+D (55875) httpd_parse: scratch buf qsize = 128
+D (55875) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (55885) httpd_txrx: httpd_recv_with_opt: pending length = 112
+D (55885) httpd_parse: read_block: received HTTP request block size = 112
+D (55895) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (55895) httpd_parse: continue_parsing: un-paused
+D (55905) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (55915) httpd_parse: cb_header_field: processing field = Connection
+D (55915) httpd_parse: cb_header_value: processing value = keep-alive
+D (55925) httpd_parse: cb_header_field: processing field = Upgrade-Insecure-Requests
+D (55935) httpd_parse: cb_header_value: processing value = 1
+D (55935) httpd_parse: cb_header_field: processing field = User-Agent
+D (55945) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; And
+D (55945) httpd_parse: parse_block: parsed block size = 112
+D (55955) httpd_parse: scratch buf qsize = 240
+D (55955) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (55965) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (55975) httpd_parse: read_block: received HTTP request block size = 128
+D (55975) httpd_parse: cb_header_value: processing value = roid 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (55985) httpd_parse: cb_header_field: processing field = Sec-Purpose
+D (55995) httpd_parse: cb_header_value: processing value = prefetch;prerender
+D (56005) httpd_parse: cb_header_field: processing field = Purpo
+D (56005) httpd_parse: parse_block: parsed block size = 240
+D (56015) httpd_parse: scratch buf qsize = 368
+D (56015) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (56025) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (56025) httpd_parse: read_block: received HTTP request block size = 128
+D (56035) httpd_parse: cb_header_field: processing field = se
+D (56045) httpd_parse: cb_header_value: processing value = prefetch
+D (56045) httpd_parse: cb_header_field: processing field = Accept
+D (56055) httpd_parse: cb_header_value: processing value = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,applicati
+D (56065) httpd_parse: parse_block: parsed block size = 368
+D (56075) httpd_parse: scratch buf qsize = 496
+D (56075) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (56085) httpd_txrx: httpd_recv_with_opt: received length = 119
+D (56085) httpd_parse: read_block: received HTTP request block size = 119
+D (56095) httpd_parse: cb_header_value: processing value = on/signed-exchange;v=b3;q=0.7
+D (56105) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (56105) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (56115) httpd_parse: cb_header_field: processing field = Accept-Language
+D (56125) httpd_parse: cb_header_value: processing value = ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (56135) httpd_parse: cb_headers_complete: bytes read     = 506
+D (56135) httpd_parse: cb_headers_complete: content length = 0
+D (56145) httpd_parse: pause_parsing: paused
+D (56145) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (56145) httpd_parse: cb_no_body: message complete
+D (56165) httpd_parse: httpd_parse_req: parsing complete
+D (56165) httpd_uri: httpd_uri: request for / with type 1
+D (56175) httpd_uri: httpd_find_uri_handler: [0] = /
+D (56175) httpd_uri: httpd_find_uri_handler: [1] = /
+D (56185) httpd_txrx: httpd send buffer size = 64
+D (56185) httpd_txrx: httpd_send_all: sent = 64
+D (56185) httpd_txrx: httpd_send_all: sent = 2
+D (56195) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:4 posted to loop 0x3ffbd294
+D (56195) httpd_txrx: httpd_send_all: sent = 4595
+D (56205) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:6 posted to loop 0x3ffbd294
+D (56205) httpd_sess: httpd_sess_process: httpd_req_delete
+D (56225) httpd_sess: httpd_sess_process: success
+D (56225) httpd: httpd_server: doing select maxfd+1 = 58
+D (67495) httpd: httpd_process_session: processing socket 57
+D (67495) httpd_sess: httpd_sess_process: httpd_req_new
+D (67495) httpd_parse: scratch buf qsize = 128
+D (67495) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (67505) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (67505) httpd_parse: read_block: received HTTP request block size = 128
+D (67515) httpd_parse: cb_url: message begin
+D (67515) httpd_parse: cb_url: processing url = /api/servo
+D (67525) httpd_parse: verify_url: received URI = /api/servo
+D (67525) httpd_parse: cb_header_field: headers begin
+D (67535) httpd_txrx: httpd_unrecv: length = 102
+D (67535) httpd_parse: pause_parsing: paused
+D (67545) httpd_parse: cb_header_field: processing field = Host
+D (67545) httpd_parse: scratch buf qsize = 128
+D (67555) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (67555) httpd_txrx: httpd_recv_with_opt: pending length = 102
+D (67565) httpd_parse: read_block: received HTTP request block size = 102
+D (67565) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (67575) httpd_parse: continue_parsing: un-paused
+D (67575) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (67585) httpd_parse: cb_header_field: processing field = Connection
+D (67595) httpd_parse: cb_header_value: processing value = keep-alive
+D (67595) httpd_parse: cb_header_field: processing field = Content-Length
+D (67605) httpd_parse: cb_header_value: processing value = 24
+D (67615) httpd_parse: cb_header_field: processing field = User-Agent
+D (67615) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; And
+D (67625) httpd_parse: parse_block: parsed block size = 102
+D (67625) httpd_parse: scratch buf qsize = 230
+D (67635) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (67635) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (67645) httpd_parse: read_block: received HTTP request block size = 128
+D (67655) httpd_parse: cb_header_value: processing value = roid 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (67665) httpd_parse: cb_header_field: processing field = Content-Type
+D (67675) httpd_parse: cb_header_value: processing value = application/json
+D (67675) httpd_parse: cb_header_field: processing field = Accept
+D (67685) httpd_parse: parse_block: parsed block size = 230
+D (67685) httpd_parse: scratch buf qsize = 358
+D (67695) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (67695) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (67705) httpd_parse: read_block: received HTTP request block size = 128
+D (67715) httpd_parse: cb_header_field: processing field = 
+D (67715) httpd_parse: cb_header_value: processing value = */*
+D (67725) httpd_parse: cb_header_field: processing field = Origin
+D (67725) httpd_parse: cb_header_value: processing value = http://192.168.123.121
+D (67735) httpd_parse: cb_header_field: processing field = Referer
+D (67745) httpd_parse: cb_header_value: processing value = http://192.168.123.121/
+D (67745) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (67755) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (67765) httpd_parse: cb_header_field: processing field = Accept-Language
+D (67765) httpd_parse: cb_header_value: processing value = ko-KR,
+D (67775) httpd_parse: parse_block: parsed block size = 358
+D (67775) httpd_parse: scratch buf qsize = 486
+D (67785) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (67785) httpd_txrx: httpd_recv_with_opt: received length = 57
+D (67795) httpd_parse: read_block: received HTTP request block size = 57
+D (67805) httpd_parse: cb_header_value: processing value = ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (67805) httpd_parse: cb_headers_complete: bytes read     = 420
+D (67815) httpd_parse: cb_headers_complete: content length = 24
+D (67815) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (67825) httpd_txrx: httpd_unrecv: length = 24
+D (67835) httpd_parse: pause_parsing: paused
+D (67835) httpd_parse: cb_on_body: body begins
+D (67845) httpd_parse: httpd_parse_req: parsing complete
+D (67845) httpd_uri: httpd_uri: request for /api/servo with type 3
+D (67855) httpd_uri: httpd_find_uri_handler: [0] = /
+D (67855) httpd_uri: httpd_find_uri_handler: [1] = /
+D (67865) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+[0;33mW (67865) httpd_uri: httpd_uri: Method '3' not allowed for URI '/api/servo'[0m
+[0;33mW (67875) httpd_txrx: httpd_resp_send_err: 405 Method Not Allowed - Specified method is invalid for this resource[0m
+D (67885) httpd_txrx: httpd send buffer size = 78
+D (67885) httpd_txrx: httpd_send_all: sent = 78
+D (67895) httpd_txrx: httpd_send_all: sent = 2
+D (67895) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:4 posted to loop 0x3ffbd294
+D (67895) httpd_txrx: httpd_send_all: sent = 45
+D (67915) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:6 posted to loop 0x3ffbd294
+D (67915) httpd_sess: httpd_sess_delete: fd = 57
+D (67925) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:0 posted to loop 0x3ffbd294
+D (67925) httpd_sess: httpd_sess_delete: active sockets: 0
+D (67935) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (67935) httpd: httpd_server: doing select maxfd+1 = 56
+D (67955) httpd: httpd_server: processing listen socket 54
+D (67955) httpd: httpd_accept_conn: newfd = 57
+D (67965) httpd_sess: httpd_sess_new: fd = 57
+D (67965) httpd_sess: httpd_sess_new: active sockets: 1
+D (67975) httpd: httpd_accept_conn: complete
+D (67975) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:2 posted to loop 0x3ffbd294
+D (67975) httpd: httpd_server: doing select maxfd+1 = 58
+D (67995) httpd: httpd_process_session: processing socket 57
+D (67995) httpd_sess: httpd_sess_process: httpd_req_new
+D (68005) httpd_parse: scratch buf qsize = 128
+D (68005) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (68015) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (68015) httpd_parse: read_block: received HTTP request block size = 128
+D (68025) httpd_parse: cb_url: message begin
+D (68025) httpd_parse: cb_url: processing url = /api/servo
+D (68035) httpd_parse: verify_url: received URI = /api/servo
+D (68035) httpd_parse: cb_header_field: headers begin
+D (68045) httpd_txrx: httpd_unrecv: length = 102
+D (68045) httpd_parse: pause_parsing: paused
+D (68055) httpd_parse: cb_header_field: processing field = Host
+D (68055) httpd_parse: scratch buf qsize = 128
+D (68065) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (68065) httpd_txrx: httpd_recv_with_opt: pending length = 102
+D (68075) httpd_parse: read_block: received HTTP request block size = 102
+D (68075) httpd_parse: continue_parsing: skip pre-parsed data of size = 5
+D (68085) httpd_parse: continue_parsing: un-paused
+D (68095) httpd_parse: cb_header_value: processing value = 192.168.123.121
+D (68095) httpd_parse: cb_header_field: processing field = Connection
+D (68105) httpd_parse: cb_header_value: processing value = keep-alive
+D (68105) httpd_parse: cb_header_field: processing field = Content-Length
+D (68115) httpd_parse: cb_header_value: processing value = 25
+D (68125) httpd_parse: cb_header_field: processing field = User-Agent
+D (68125) httpd_parse: cb_header_value: processing value = Mozilla/5.0 (Linux; And
+D (68135) httpd_parse: parse_block: parsed block size = 102
+D (68135) httpd_parse: scratch buf qsize = 230
+D (68145) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (68155) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (68155) httpd_parse: read_block: received HTTP request block size = 128
+D (68165) httpd_parse: cb_header_value: processing value = roid 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36
+D (68175) httpd_parse: cb_header_field: processing field = Content-Type
+D (68185) httpd_parse: cb_header_value: processing value = application/json
+D (68185) httpd_parse: cb_header_field: processing field = Accept
+D (68195) httpd_parse: parse_block: parsed block size = 230
+D (68195) httpd_parse: scratch buf qsize = 358
+D (68205) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (68205) httpd_txrx: httpd_recv_with_opt: received length = 128
+D (68215) httpd_parse: read_block: received HTTP request block size = 128
+D (68225) httpd_parse: cb_header_field: processing field = 
+D (68225) httpd_parse: cb_header_value: processing value = */*
+D (68235) httpd_parse: cb_header_field: processing field = Origin
+D (68235) httpd_parse: cb_header_value: processing value = http://192.168.123.121
+D (68245) httpd_parse: cb_header_field: processing field = Referer
+D (68255) httpd_parse: cb_header_value: processing value = http://192.168.123.121/
+D (68255) httpd_parse: cb_header_field: processing field = Accept-Encoding
+D (68265) httpd_parse: cb_header_value: processing value = gzip, deflate
+D (68275) httpd_parse: cb_header_field: processing field = Accept-Language
+D (68275) httpd_parse: cb_header_value: processing value = ko-KR,
+D (68285) httpd_parse: parse_block: parsed block size = 358
+D (68285) httpd_parse: scratch buf qsize = 486
+D (68295) httpd_txrx: httpd_recv_with_opt: requested length = 128
+D (68295) httpd_txrx: httpd_recv_with_opt: received length = 58
+D (68305) httpd_parse: read_block: received HTTP request block size = 58
+D (68315) httpd_parse: cb_header_value: processing value = ko;q=0.9,en-US;q=0.8,en;q=0.7
+D (68315) httpd_parse: cb_headers_complete: bytes read     = 420
+D (68325) httpd_parse: cb_headers_complete: content length = 25
+D (68335) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:3 posted to loop 0x3ffbd294
+D (68335) httpd_txrx: httpd_unrecv: length = 25
+D (68345) httpd_parse: pause_parsing: paused
+D (68345) httpd_parse: cb_on_body: body begins
+D (68355) httpd_parse: httpd_parse_req: parsing complete
+D (68355) httpd_uri: httpd_uri: request for /api/servo with type 3
+D (68365) httpd_uri: httpd_find_uri_handler: [0] = /
+D (68365) httpd_uri: httpd_find_uri_handler: [1] = /
+D (68375) httpd_uri: httpd_find_uri_handler: [2] = /api/servo
+[0;33mW (68375) httpd_uri: httpd_uri: Method '3' not allowed for URI '/api/servo'[0m
+[0;33mW (68385) httpd_txrx: httpd_resp_send_err: 405 Method Not Allowed - Specified method is invalid for this resource[0m
+D (68395) httpd_txrx: httpd send buffer size = 78
+D (68405) httpd_txrx: httpd_send_all: sent = 78
+D (68405) httpd_txrx: httpd_send_all: sent = 2
+D (68405) httpd_txrx: httpd_send_all: sent = 45
+D (68415) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:4 posted to loop 0x3ffbd294
+D (68415) httpd_sess: httpd_sess_delete: fd = 57
+D (68425) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:6 posted to loop 0x3ffbd294
+D (68425) httpd_sess: httpd_sess_delete: active sockets: 0
+D (68435) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:0 posted to loop 0x3ffbd294
+D (68445) httpd: httpd_server: doing select maxfd+1 = 56
+D (68455) event: no handlers have been registered for event ESP_HTTP_SERVER_EVENT:7 posted to loop 0x3ffbd294
+D (96675) wifi:bcnd: 3008 -> 3016
+D (97595) wifi:bcnd: 3016 -> 3008
+D (120635) wifi:bcnd: 3008 -> 3016
+D (121965) esp_netif_lwip: esp_netif_ip_lost_timer esp_netif:0x3ffbe1d4
+D (121965) esp_netif_lwip: if0x3ffbe1d4 ip lost tmr: no need raise ip lost event
+D (122475) wifi:bcnd: 3016 -> 3008
+D (186685) wifi:bcnd: 3008 -> 3016
+D (188215) wifi:bcnd: 3016 -> 3008
+D (209105) wifi:bcnd: 3008 -> 3016
+D (210945) wifi:bcnd: 3016 -> 3008

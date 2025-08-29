@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Servo Controller</title>
+    <style>
+        body { font-family: sans-serif; background-color: #2c3e50; color: white; margin: 0; padding: 15px; }
+        h1 { text-align: center; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .motor-card { background-color: #34495e; border-radius: 10px; padding: 15px; transition: background-color 0.3s; }
+        .motor-card.off { background-color: #7f8c8d; }
+        .motor-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .motor-title { font-size: 1.5em; font-weight: bold; }
+        /* On/Off Toggle Switch */
+        .onoff-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+        .onoff-switch input { opacity: 0; width: 0; height: 0; }
+        .slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider-toggle:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider-toggle { background-color: #27ae60; }
+        input:checked + .slider-toggle:before { transform: translateX(26px); }
+        .control-group { margin-top: 10px; }
+        label { display: block; text-align: left; margin-bottom: 5px; }
+        .value-display { font-weight: bold; color: #3498db; }
+        input[type="range"] { width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>Servo Controller (Angle Control)</h1>
+    <div class="grid-container" id="grid-container"></div>
+
+    <script>
+        const grid = document.getElementById('grid-container');
+        const channels = [0, 1, 2, 3, 8, 9];
+        const motorStates = {};
+
+        // 서버로 제어 명령 전송
+        async function sendState(channel) {
+            const state = motorStates[channel];
+            try {
+                await fetch('/api/servo', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        channel: channel,
+                        on: state.on ? 1 : 0,
+                        angle: state.angle,
+                        speed: state.speed
+                    })
+                });
+            } catch (error) { console.error('Error:', error); }
+        }
+
+        channels.forEach(ch => {
+            // 각 모터의 상태 초기화
+            motorStates[ch] = { on: false, angle: 0, speed: 50 };
+
+            const card = document.createElement('div');
+            card.className = 'motor-card off';
+            card.id = `card-${ch}`;
+            card.innerHTML = `
+                <div class="motor-header">
+                    <span class="motor-title">Channel ${ch}</span>
+                    <label class="onoff-switch">
+                        <input type="checkbox" class="onoff-checkbox" data-channel="${ch}">
+                        <span class="slider-toggle"></span>
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label>Angle: <span class="value-display" id="angle-value-${ch}">0</span></label>
+                    <input type="range" min="-90" max="90" value="0" class="angle-slider" data-channel="${ch}">
+                </div>
+                <div class="control-group">
+                    <label>Speed: <span class="value-display" id="speed-value-${ch}">50</span></label>
+                    <input type="range" min="1" max="100" value="50" class="speed-slider" data-channel="${ch}">
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        grid.addEventListener('change', (e) => {
+            const ch = parseInt(e.target.dataset.channel, 10);
+            if (isNaN(ch)) return;
+
+            // On/Off 스위치
+            if (e.target.classList.contains('onoff-checkbox')) {
+                motorStates[ch].on = e.target.checked;
+                document.getElementById(`card-${ch}`).classList.toggle('off', !motorStates[ch].on);
+                sendState(ch);
+            }
+            // Angle/Speed 슬라이더 (마우스를 놓았을 때)
+            if (e.target.classList.contains('angle-slider') || e.target.classList.contains('speed-slider')) {
+                sendState(ch);
+            }
+        });
+
+        grid.addEventListener('input', (e) => {
+            const ch = parseInt(e.target.dataset.channel, 10);
+            if (isNaN(ch)) return;
+
+            // Angle 슬라이더 (움직일 때)
+            if (e.target.classList.contains('angle-slider')) {
+                motorStates[ch].angle = parseInt(e.target.value, 10);
+                document.getElementById(`angle-value-${ch}`).textContent = motorStates[ch].angle;
+            }
+            // Speed 슬라이더 (움직일 때)
+            if (e.target.classList.contains('speed-slider')) {
+                motorStates[ch].speed = parseInt(e.target.value, 10);
+                document.getElementById(`speed-value-${ch}`).textContent = motorStates[ch].speed;
+            }
+        });
+    </script>
+</body>
+</html>

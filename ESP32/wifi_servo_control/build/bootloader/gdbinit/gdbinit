@@ -1,0 +1,2 @@
+source /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/bootloader/gdbinit/symbols
+source /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/bootloader/gdbinit/connect

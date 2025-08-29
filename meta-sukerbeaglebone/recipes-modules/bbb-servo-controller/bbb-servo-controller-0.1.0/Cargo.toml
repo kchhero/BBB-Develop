@@ -7,3 +7,6 @@ edition = "2018"
 linux-embedded-hal = "0.4"
 pwm-pca9685 = "1.0"
 ctrlc = "3.4.4"
+
+actix-web = "4.0"
+actix-files = "0.6"

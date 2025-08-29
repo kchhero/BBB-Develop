@@ -1,0 +1,18 @@
+Command: ninja all
+[1/9] Performing build step for 'bootloader'
+[1/1] cd /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/bootloader && /home/suker/.espressif/python_env/idf6.0_py3.12_env/bin/python /home/suker/tmp/ESP32/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/bootloader/bootloader.bin
+Bootloader binary size 0x6680 bytes. 0x980 bytes (8%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/wifi_servo_control.c.obj
+[4/9] Linking C static library esp-idf/main/libmain.a
+[5/9] Completed 'bootloader'
+[6/9] Generating esp-idf/esp_system/ld/sections.ld
+[7/9] Linking CXX executable wifi_servo_control.elf
+[8/9] Generating binary image from built executable
+esptool.py v4.10.dev2
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/wifi_servo_control.bin
+[9/9] cd /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build && /home/suker/.espressif/python_env/idf6.0_py3.12_env/bin/python /home/suker/tmp/ESP32/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/partition_table/partition-table.bin /home/suker/tmp/ESP32/esp-idf/wifi_servo_control/build/wifi_servo_control.bin
+wifi_servo_control.bin binary size 0x2c820 bytes. Smallest app partition is 0x100000 bytes. 0xd37e0 bytes (83%) free.

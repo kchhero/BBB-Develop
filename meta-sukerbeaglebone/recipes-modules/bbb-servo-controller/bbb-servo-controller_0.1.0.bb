@@ -5,6 +5,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
 SRC_URI = "file://bbb-servo-controller-0.1.0/ \
+           file://index.html \
         "
 
 S = "${WORKDIR}/bbb-servo-controller-0.1.0"
@@ -18,7 +19,7 @@ do_install:append() {
         cp ${D}/usr/bin/bbb-servo-controller /home/suker/myYocto/poky/build-full-cmdline/
 
         install -d ${D}${datadir}/bbb-servo-controller
-        #install -m 0644 ${WORKDIR}/index.html ${D}${datadir}/bbb-servo-controller/
+        install -m 0644 ${WORKDIR}/index.html ${D}${datadir}/bbb-servo-controller/        
 }
 
-#FILES:${PN} += "${datadir}/bbb-servo-controller/index.html"
+FILES:${PN} += "${datadir}/bbb-servo-controller/index.html"
