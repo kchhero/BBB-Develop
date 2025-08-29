@@ -49,6 +49,20 @@
 >  $ idf.py build
 #### step5 : output .bin 
 #### step6 : flashing
+
+=============================================================
+```
+  uart_config_t uart_config = {
+      .baud_rate = 115200,   // ← 이 값을 BBB와 동일하게
+      .data_bits = UART_DATA_8_BITS,
+      .parity    = UART_PARITY_DISABLE,
+      .stop_bits = UART_STOP_BITS_1,
+      .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+  };
+```
+
+//TEST
+> $ stty -F /dev/ttyO1 115200 cs8 -cstopb -parenb
 >  $ idf.py -p /dev/ttyUSB0 flash
 
 >  $ idf.py -p /dev/ttyUSB0 monitor
