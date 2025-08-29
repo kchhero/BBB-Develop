@@ -39,8 +39,27 @@ https://github.com/user-attachments/assets/64102ca5-d0a9-471f-a96d-ad6ac5cfcf4a
 |------|---|---|
 | VIN (또는 5V)	| P9_05 (VDD_5V) | ESP32에 5V 전원 공급 |
 | GND | P9_01 (DGND) | 공통 접지 연결 (필수) |
-| TXD0 (또는 TX) | P9_11 (UART4_RXD) | ESP32의 송신(TX) -> BBB의 수신(RX) |
-| RXD0 (또는 RX) | P9_13 (UART4_TXD) | ESP32의 수신(RX) -> BBB의 송신(TX) |
+| TXD0 (또는 TX) | P9_11 (UART4_RXD) | ESP32의 17 pin -> BBB의 수신(RX) |
+| RXD0 (또는 RX) | P9_13 (UART4_TXD) | ESP32의 16 pin -> BBB의 송신(TX) |
    ### Sofrware
    #### Test module
-   
+
+## 4. index.html
+```
+async function sendState(channel) {
+   const state = motorStates[channel];
+   try {
+       await fetch('/api/servo', {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify({
+               channel: channel,
+               on: state.on ? 1 : 0,
+               angle: state.angle,
+               speed: state.speed
+           })
+       });
+   } catch (error) { console.error('Error:', error); }
+}
+```
+<img width="1160" height="532" alt="image" src="https://github.com/user-attachments/assets/5fe0d60e-2ca0-496d-8cbb-d6c9cf744631" />
