@@ -83,12 +83,12 @@
                         })
                     });
                 } catch (error) { console.error('Error:', error); }
-            }, 50);
+            }, 20);
         }
 
         motorConfig.forEach(config => {
             const ch = config.ch;
-            motorStates[ch] = { on: false, angle: config.standby, speed: 10 };
+            motorStates[ch] = { on: false, angle: config.standby, speed: 20 };
             
             const card = document.createElement('div');
             card.className = 'motor-card off';
@@ -113,8 +113,8 @@
                         <input type="range" class="level-slider" id="level-slider-${ch}" min="0" max="100" value="50" data-channel="${ch}" disabled>
                     </div>
                     <div class="control-group">
-                        <label>Speed: <span class="value-display" id="speed-value-${ch}">10</span></label>
-                        <input type="range" class="speed-slider" id="speed-slider-${ch}" min="1" max="100" value="10" data-channel="${ch}" disabled>
+                        <label>Speed: <span class="value-display" id="speed-value-${ch}">20</span></label>
+                        <input type="range" class="speed-slider" id="speed-slider-${ch}" min="1" max="100" value="20" data-channel="${ch}" disabled>
                     </div>
                 </div>
             `;
@@ -129,6 +129,9 @@
             const angleToLevel = (angle, cfg) => ((angle - cfg.min) / (cfg.max - cfg.min)) * 100;
             const levelToAngle = (level, cfg) => cfg.min + ((cfg.max - cfg.min) * (level / 100.0));
             
+            levelSlider.value = angleToLevel(config.standby, config);
+            levelValue.textContent = levelSlider.value;
+
             onOffCheckbox.addEventListener('change', () => {
                 const isOn = onOffCheckbox.checked;
                 motorStates[ch].on = isOn;

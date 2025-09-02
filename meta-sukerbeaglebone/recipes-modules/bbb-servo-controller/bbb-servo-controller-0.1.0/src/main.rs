@@ -11,8 +11,8 @@ use pwm_pca9685::{Channel, Pca9685};
 
 // --- 설정값 ---
 const I2C_BUS: u8 = 2;
-const SERVO_MIN_PULSE: u16 = 110;
-const SERVO_MAX_PULSE: u16 = 615;
+const SERVO_MIN_PULSE: f32 = 150.0;
+const SERVO_MAX_PULSE: f32 = 600.0;
 
 // --- 구조체 정의 ---
 #[derive(Clone, Copy, Debug, Default)]
@@ -50,8 +50,9 @@ struct ServoCommand {
 fn ui_angle_to_servo_angle(ui_angle: f32) -> f32 { (ui_angle + 90.0).clamp(0.0, 180.0) }
 
 fn servo_angle_to_pulse(angle: f32) -> u16 {
-    let pulse_range = (SERVO_MAX_PULSE - SERVO_MIN_PULSE) as f32;
-    (SERVO_MIN_PULSE as f32 + (angle / 180.0) * pulse_range).round() as u16
+    let angle_clamped = angle.clamp(0.0, 180.0);    
+    let pulse = SERVO_MIN_PULSE + (SERVO_MAX_PULSE - SERVO_MIN_PULSE) * (angle_clamped / 180.0);
+    pulse.round() as u16
 }
 
 fn u8_to_channel(ch: u8) -> Option<Channel> {

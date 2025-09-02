@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
-#include "esp_http_client.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_log.h"
 #include "nvs_flash.h"
+#include "esp_http_client.h"
 #include "esp_http_server.h"
 #include "driver/uart.h"
-#include "cJSON.h" // JSON 파싱을 위해 cJSON 라이브러리 추가
+#include "cJSON.h"
 
 #define WIFI_SSID      "********"
 #define WIFI_PASSWORD  "********"
@@ -19,30 +19,63 @@
 static const char *TAG = "ESP32_WEB_SERVER";
 
 // --- 웹 서버 핸들러 ---
-
-// index.html 파일을 펌웨어에서 가져오기 위한 선언
 extern const uint8_t index_html_start[] asm("_binary_index_html_start");
 extern const uint8_t index_html_end[]   asm("_binary_index_html_end");
 
-// GET / 요청 핸들러: UI (index.html)를 전송
-static esp_err_t root_get_handler(httpd_req_t *req)
-{
-    const uint32_t index_html_len = index_html_end - index_html_start;
+static esp_err_t root_get_handler(httpd_req_t *req) {
     httpd_resp_set_type(req, "text/html");
-    httpd_resp_send(req, (const char *)index_html_start, index_html_len);
+    httpd_resp_send(req, (const char *)index_html_start, index_html_end - index_html_start);
     return ESP_OK;
 }
 
-// POST /api/servo 요청 핸들러: JSON 데이터를 받아 UART로 전송
-static esp_err_t servo_post_handler(httpd_req_t *req)
-{
+// UI로부터 설정을 받아 시리얼로 전달
+static esp_err_t configure_handler(httpd_req_t *req) {
+    char *content = malloc(req->content_len + 1);
+    if (content == NULL) {
+        httpd_resp_send_500(req);
+        return ESP_FAIL;
+    }
+
+    int recv_len = httpd_req_recv(req, content, req->content_len);
+    if (recv_len <= 0) {
+        free(content); // 실패 시에도 메모리 해제
+        return ESP_FAIL;
+    }
+    content[recv_len] = '\0';
+
+    size_t tx_buf_size = strlen(content) + 10; // "CONF:" + "\n" + 여유 공간
+    char *tx_buffer = malloc(tx_buf_size);
+    if (tx_buffer == NULL) {
+        free(content);
+        httpd_resp_send_500(req);
+        return ESP_FAIL;
+    }
+
+    int len = snprintf(tx_buffer, tx_buf_size, "CONF:%s\n", content);
+    uart_write_bytes(UART_NUM, tx_buffer, len);
+    
+    ESP_LOGI(TAG, "Configuration forwarded to BBB.");
+    httpd_resp_send(req, "OK", HTTPD_RESP_USE_STRLEN);
+
+    // 3. 사용이 끝난 메모리는 반드시 해제
+    free(content);
+    free(tx_buffer);
+
+    return ESP_OK;
+}
+
+// UI로부터 제어 명령을 받아 시리얼로 전달
+static esp_err_t servo_post_handler(httpd_req_t *req) {
     char content[128];
     int recv_len = httpd_req_recv(req, content, sizeof(content) - 1);
     if (recv_len <= 0) return ESP_FAIL;
     content[recv_len] = '\0';
 
     cJSON *root = cJSON_Parse(content);
-    if (root == NULL) { /* ... 에러 처리 ... */ }
+    if (root == NULL) { 
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Invalid JSON");
+        return ESP_FAIL;
+    }
 
     cJSON *j_ch = cJSON_GetObjectItem(root, "channel");
     cJSON *j_on = cJSON_GetObjectItem(root, "on");
@@ -51,25 +84,20 @@ static esp_err_t servo_post_handler(httpd_req_t *req)
 
     if (cJSON_IsNumber(j_ch) && cJSON_IsNumber(j_on) && cJSON_IsNumber(j_angle) && cJSON_IsNumber(j_speed)) {
         char tx_buffer[64];
-        // C:O:A:S 형식으로 시리얼 데이터 생성 (예: 8:1:-45:50)
-        int len = snprintf(tx_buffer, sizeof(tx_buffer), "%d:%d:%d:%d\n", 
-            j_ch->valueint, j_on->valueint, j_angle->valueint, j_speed->valueint);
-        
+        int len = snprintf(tx_buffer, sizeof(tx_buffer), "CMD:%d:%d:%d:%d\n", 
+            j_ch->valueint, j_on->valueint, (int)j_angle->valuedouble, j_speed->valueint);
         uart_write_bytes(UART_NUM, tx_buffer, len);
-        ESP_LOGI(TAG, "Sent: %s", tx_buffer);
-        httpd_resp_send(req, "OK", HTTPD_RESP_USE_STRLEN);
-    } else {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "Invalid payload");
     }
 
     cJSON_Delete(root);
+    httpd_resp_send(req, "OK", HTTPD_RESP_USE_STRLEN);
     return ESP_OK;
 }
 
 // 웹 서버 시작 함수 (URI 핸들러 등록)
 static httpd_handle_t start_webserver(void)
 {
-     httpd_handle_t server = NULL;
+    httpd_handle_t server = NULL;
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
     config.lru_purge_enable = true;
 
@@ -111,6 +139,24 @@ static httpd_handle_t start_webserver(void)
             .user_ctx = NULL
         };
         httpd_register_uri_handler(server, &servo_api_patch);
+
+        // =================================================================
+        httpd_uri_t config_uri = {
+            .uri = "/api/configure",
+            .method = HTTP_METHOD_POST,
+            .handler = configure_handler,
+            .user_ctx = NULL
+        };
+        httpd_register_uri_handler(server, &config_uri);
+
+        // =================================================================
+        httpd_uri_t config_uri_patch = {
+            .uri      = "/api/configure",
+            .method   = HTTP_METHOD_PATCH, // PATCH 요청을
+            .handler  = configure_handler, // POST 핸들러와 동일한 함수로 처리
+            .user_ctx = NULL
+        };
+        httpd_register_uri_handler(server, &config_uri_patch);
 
         return server;
     }
