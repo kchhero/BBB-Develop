@@ -1,0 +1,45 @@
+1번 모터 : -35 일때 동작 대기 상태, 즉 기준으로 설정. 좌 -90, 우 35
+2번 모터 : -30 일때 동작 대기 상태, 즉 기중으로 설정. 아래 50 ~ 위 15
+3번 모터 : 5 일때 동작 대기 상태, 즉 기중으로 설정. 아래 -20 ~ 위 30
+4번 모터 : -15 일때 동작 대기 상태, 즉 기중으로 설정. 아래 -50 ~ 위 30
+5번 모터 : -10 일때 동작 대기 상태, 즉 기중으로 설정. 좌 -90 ~ 우 70
+6번 모터 : 10 일때 동작 대기 상태, 즉 기중으로 설정. 벌리기 -15 ~ 잡기 35
+root@beaglebone:~# ./bbb-servo-controller
+Starting web server. Waiting for configuration from UI...
+----------------------------------------------
+channel: 15
+standby angle: -35
+initial servo angle: 55
+----------------------------------------------
+initial_pulse: 264
+----------------------------------------------
+channel: 14
+standby angle: -30
+initial servo angle: 60
+----------------------------------------------
+initial_pulse: 278
+----------------------------------------------
+channel: 13
+standby angle: 5
+initial servo angle: 95
+----------------------------------------------
+initial_pulse: 377
+----------------------------------------------
+channel: 12
+standby angle: -15
+initial servo angle: 75
+----------------------------------------------
+initial_pulse: 320
+----------------------------------------------
+channel: 7
+standby angle: -10
+initial servo angle: 80
+----------------------------------------------
+initial_pulse: 334
+----------------------------------------------
+channel: 6
+standby angle: 10
+initial servo angle: 100
+----------------------------------------------
+initial_pulse: 391
+Configuration received. 6 servos initialized.

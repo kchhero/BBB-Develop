@@ -1,47 +1,207 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BeagleBone 서보 컨트롤러</title>
+    <title>Advanced Servo Controller (PC Ver.)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <style>
-        /* 이전 LED 컨트롤러와 유사한 스타일 */
-        body { font-family: sans-serif; text-align: center; }
-       .controller { border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 20px auto; max-width: 300px; }
-        button { padding: 10px; margin: 5px; font-size: 16px; cursor: pointer; width: 100px; }
-        #status { margin-top: 20px; font-style: italic; color: #666; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #2c3e50; color: white; margin: 0; padding: 15px; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { margin-bottom: 10px; }
+        .global-controls button { padding: 10px 20px; font-size: 1em; border-radius: 5px; border: none; cursor: pointer; background-color: #e67e22; color: white; margin: 0 5px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+        .motor-card { background-color: #34495e; border-radius: 10px; padding: 15px; transition: all 0.3s; border: 2px solid transparent; }
+        .motor-card:focus-within, .motor-card.focused { border-color: #3498db; outline: none; }
+        .motor-card .controls-wrapper { transition: opacity 0.3s; }
+        .motor-card.off .controls-wrapper { opacity: 0.5; pointer-events: none; }
+        .motor-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .motor-title { font-size: 1.5em; font-weight: bold; }
+        .onoff-switch { position: relative; display: inline-block; width: 52px; height: 26px; }
+        .onoff-switch input { display: none; }
+        .onoff-switch .slider-toggle { cursor: pointer; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #ccc; border-radius: 26px; transition: .2s; }
+        .onoff-switch .slider-toggle:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; top: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider-toggle { background-color: #27ae60; }
+        input:checked + .slider-toggle:before { transform: translateX(26px); }
+        .control-group { margin-top: 10px; }
+        .level-labels { display: flex; justify-content: space-between; font-size: 0.9em; padding: 0 5px; }
+        .value-display { font-weight: bold; color: #3498db; }
+        input[type="range"] { width: 100%; }
+        input[type="range"]:disabled::-webkit-slider-thumb { background: #888; }
+        input[type="range"]:disabled::-moz-range-thumb { background: #888; }
     </style>
 </head>
 <body>
-    <h1>서보 컨트롤러</h1>
-
-    <div class="controller">
-        <h2>채널 3</h2>
-        <button onclick="moveServo(3, 'ccw', 50)">◀ CCW (50ms)</button>
-        <button onclick="moveServo(3, 'cw', 50)">CW (50ms) ▶</button>
+    <div class="header">
+        <h1>Robotic Arm Controller</h1>
+        <div class="global-controls">
+            <button id="all-on-btn">ALL ON</button>
+            <button id="all-off-btn">ALL OFF</button>
+        </div>
     </div>
-
-    <div class="controller">
-        <h2>채널 11</h2>
-        <button onclick="moveServo(11, 'ccw', 50)">◀ CCW (50ms)</button>
-        <button onclick="moveServo(11, 'cw', 50)">CW (50ms) ▶</button>
-    </div>
-
-    <p id="status">버튼을 눌러 서보모터를 제어하세요.</p>
+    <div class="grid-container" id="grid-container"></div>
 
     <script>
-        async function moveServo(channel, direction, duration) {
-            const statusElement = document.getElementById('status');
-            statusElement.textContent = `채널 ${channel} ${direction} 방향으로 ${duration}ms 이동 요청...`;
+        const grid = document.getElementById('grid-container');
+        
+        const motorConfig = [
+            { ch: 15, name: "1. 베이스 회전", labels: ["좌", "우"], standby: -35, min: -90, max: 35, invert: false },
+            { ch: 14, name: "2. 어깨", labels: ["아래", "위"], standby: -30, min: -50, max: 15, invert: false },
+            { ch: 13, name: "3. 팔꿈치", labels: ["뒤", "앞"], standby: 5,   min: -20, max: 30, invert: false },
+            { ch: 12, name: "4. 손목 좌우", labels: ["좌", "우"], standby: -15, min: -50, max: 30, invert: true },
+            { ch: 7,  name: "5. 손목 상하", labels: ["아래", "위"], standby: -10, min: -90, max: 70, invert: false },
+            { ch: 6,  name: "6. 집게", labels: ["놓기", "잡기"], standby: 10,  min: -15, max: 35, invert: false }
+        ];
 
+        const motorStates = {};
+        let focusedChannel = null;
+        const debounceTimers = {};
+
+        async function sendConfiguration() {
             try {
-                const response = await fetch(`/servo/${channel}/${direction}/${duration}`, {
-                    method: 'POST'
+                await fetch('/api/configure', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(motorConfig)
                 });
-                statusElement.textContent = await response.text();
-            } catch (error) {
-                statusElement.textContent = `네트워크 오류: ${error}`;
-            }
+                console.log("Configuration sent to server.");
+            } catch (error) { console.error("Failed to send configuration:", error); }
         }
+
+        function sendState(channel) {
+            clearTimeout(debounceTimers[channel]);
+            debounceTimers[channel] = setTimeout(async () => {
+                const state = motorStates[channel];
+                try {
+                    await fetch('/api/servo', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            channel: channel,
+                            on: state.on ? 1 : 0,
+                            angle: state.angle,
+                            speed: state.speed
+                        })
+                    });
+                } catch (error) { console.error('Error:', error); }
+            }, 50);
+        }
+
+        motorConfig.forEach(config => {
+            const ch = config.ch;
+            motorStates[ch] = { on: false, angle: config.standby, speed: 10 };
+            
+            const card = document.createElement('div');
+            card.className = 'motor-card off';
+            card.id = `card-${ch}`;
+            card.tabIndex = 0;
+            card.dataset.channel = ch;
+            card.innerHTML = `
+                <div class="motor-header">
+                    <span class="motor-title">${config.name}</span>
+                    <label class="onoff-switch">
+                        <input type="checkbox" class="onoff-checkbox" id="onoff-${ch}" data-channel="${ch}">
+                        <label for="onoff-${ch}" class="slider-toggle"></label>
+                    </label>
+                </div>
+                <div class="controls-wrapper">
+                    <div class="control-group">
+                        <div class="level-labels">
+                            <span>${config.labels[0]}</span>
+                            <span style="font-weight:bold; color:#e67e22;" id="level-value-${ch}">0</span>
+                            <span>${config.labels[1]}</span>
+                        </div>
+                        <input type="range" class="level-slider" id="level-slider-${ch}" min="0" max="100" value="50" data-channel="${ch}" disabled>
+                    </div>
+                    <div class="control-group">
+                        <label>Speed: <span class="value-display" id="speed-value-${ch}">10</span></label>
+                        <input type="range" class="speed-slider" id="speed-slider-${ch}" min="1" max="100" value="10" data-channel="${ch}" disabled>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+
+            const onOffCheckbox = card.querySelector(`#onoff-${ch}`);
+            const levelSlider = card.querySelector(`#level-slider-${ch}`);
+            const speedSlider = card.querySelector(`#speed-slider-${ch}`);
+            const levelValue = card.querySelector(`#level-value-${ch}`);
+            const speedValue = card.querySelector(`#speed-value-${ch}`);
+
+            const angleToLevel = (angle, cfg) => ((angle - cfg.min) / (cfg.max - cfg.min)) * 100;
+            const levelToAngle = (level, cfg) => cfg.min + ((cfg.max - cfg.min) * (level / 100.0));
+            
+            onOffCheckbox.addEventListener('change', () => {
+                const isOn = onOffCheckbox.checked;
+                motorStates[ch].on = isOn;
+                card.classList.toggle('off', !isOn);
+                levelSlider.disabled = !isOn;
+                speedSlider.disabled = !isOn;
+                sendState(ch);
+            });
+
+            levelSlider.addEventListener('input', () => {
+                levelValue.textContent = levelSlider.value;
+                motorStates[ch].angle = levelToAngle(parseInt(levelSlider.value), config);
+                sendState(ch);
+            });
+
+            speedSlider.addEventListener('input', () => {
+                speedValue.textContent = speedSlider.value;
+                motorStates[ch].speed = parseInt(speedSlider.value);
+                sendState(ch);
+            });
+        });
+        
+        function initializeUI() {
+            const angleToLevel = (angle, config) => ((angle - config.min) / (config.max - config.min)) * 100;
+            motorConfig.forEach(config => {
+                const ch = config.ch;
+                const level = angleToLevel(config.standby, config);
+                document.getElementById(`level-slider-${ch}`).value = level;
+                document.getElementById(`level-value-${ch}`).textContent = Math.round(level);
+            });
+        }
+        
+        window.addEventListener('load', () => {
+            initializeUI();
+            sendConfiguration();
+        });
+
+        grid.addEventListener('focusin', e => {
+            const ch = e.target.closest('.motor-card')?.dataset.channel;
+            if (ch) {
+                if (focusedChannel) document.getElementById(`card-${focusedChannel}`).classList.remove('focused');
+                focusedChannel = ch;
+                document.getElementById(`card-${ch}`).classList.add('focused');
+            }
+        });
+
+        document.addEventListener('keydown', e => {
+            if (!focusedChannel) return;
+            const slider = document.getElementById(`level-slider-${focusedChannel}`);
+            if (!slider || slider.disabled) return;
+            let level = parseInt(slider.value);
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+                e.preventDefault(); level = Math.max(0, level - 2);
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+                e.preventDefault(); level = Math.min(100, level + 2);
+            }
+            if (slider.value != level) {
+                slider.value = level;
+                slider.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        });
+
+        function setAllMotors(isOn) {
+            motorConfig.forEach(config => {
+                const checkbox = document.getElementById(`onoff-${config.ch}`);
+                if (checkbox.checked !== isOn) {
+                    checkbox.checked = isOn;
+                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            });
+        }
+        document.getElementById('all-on-btn').addEventListener('click', () => setAllMotors(true));
+        document.getElementById('all-off-btn').addEventListener('click', () => setAllMotors(false));
     </script>
 </body>
 </html>

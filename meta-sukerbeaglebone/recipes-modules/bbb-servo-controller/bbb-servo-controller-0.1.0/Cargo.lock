@@ -283,6 +283,7 @@ dependencies = [
  "ctrlc",
  "linux-embedded-hal",
  "pwm-pca9685",
+ "serde",
 ]
 
 [[package]]
