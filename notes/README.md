@@ -63,3 +63,18 @@ async function sendState(channel) {
 }
 ```
 <img width="1160" height="532" alt="image" src="https://github.com/user-attachments/assets/5fe0d60e-2ca0-496d-8cbb-d6c9cf744631" />
+
+## 5. Robot arm basic movement test
+Since building the entire mechanism myself was too difficult, I purchased the ICF0608 kit.
+Six servo motors are controlled using the PCA9685 driver.
+I completed basic testing of the ESP32, but I accidentally connected the 5V power supply incorrectly, which caused the regulator to burn out. So, I ordered a new ESP32 devKit.
+Anyway, I manually operated the robot arm on a PC.
+I set the min and max ranges for each joint to prevent motor failure due to over-speeding.
+
+#### commit : 385fec08bb8d0d071c49cdc037c83915e6f5f7ae
+
+https://github.com/user-attachments/assets/a0644558-17d0-46f5-9b42-fc4f5f0466f5
+
+#### modified index.html
+<img width="1325" height="537" alt="image" src="https://github.com/user-attachments/assets/fe8849af-a9f2-4a5c-b261-b658c37146db" />
+
