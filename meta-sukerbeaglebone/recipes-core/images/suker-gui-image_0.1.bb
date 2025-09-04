@@ -32,6 +32,8 @@ IMAGE_INSTALL:append = " \
         evtest \
         udev \
         minicom \
+        usbutils \
+        v4l-utils \
         "
 
 # IMAGE_INSTALL:append = " \
@@ -42,6 +44,18 @@ IMAGE_INSTALL:append = " \
 
 IMAGE_INSTALL:append = " \
         bbb-servo-controller \
+        bbb-servo-controller-wifi \
+        "
+
+# for camera
+IMAGE_INSTALL:append = " \
+        kernel-modules \
+        ffmpeg \
+        libjpeg-turbo \
+        libpng \
+        libgpiod \
+        gstreamer1.0 \
+        alsa-utils \
         "
 
 # IMAGE_INSTALL:remove = "mesa-pvr"
@@ -49,6 +63,6 @@ IMAGE_INSTALL:append = " \
 
 PN = "suker-gui-image"
 
-IMAGE_ROOTFS_SIZE = "524288"
-#IMAGE_ROOTFS_EXTRA_SPACE = "1048576"
+IMAGE_ROOTFS_SIZE = "1048576"
+IMAGE_ROOTFS_EXTRA_SPACE = "128"
 IMAGE_OVERHEAD_FACTOR = "1.0"
