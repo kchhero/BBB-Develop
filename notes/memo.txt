@@ -9,3 +9,25 @@
  # linux kernel root에서
    $ ctags -R --languages=DTS --extras=+q --fields=+iaS
 
+3. 카메라 배치 관련 (두 대 고정형으로 사용시)
+  * Overhead (Top) — 전체 탐지용
+    - 높이: 작업면에서 30–50 cm (권장 40 cm)
+    - 각도: 거의 수직(다운샷) — 픽셀→테이블 변환이 단순
+    - 역할: 전체 영역 스캔, 대상 후보 선정, 대략 좌표 산출
+  * Side / Oblique (45°) — 보조 시야 / 각도 보정
+    - 위치: 옆면에서 30–50 cm, 약 30–45° 기울기
+    - 역할: Overhead에서 가려지는 부분 확인, 색·모양 확인 보완, 회전 정보 보정
+
+  * /etc/udev/rules.d/99-camera.rules
+    - SUBSYSTEM=="video4linux", ATTRS{idVendor}=="4c4a", ATTRS{idProduct}=="4a55", ATTRS{serial}=="12345678",     -SYMLINK+="camera_overhead"
+    - SUBSYSTEM=="video4linux", ATTRS{idVendor}=="4c4a", ATTRS{idProduct}=="4a55", ATTRS{serial}=="87654321", SYMLINK+="camera_side"
+
+4. 노출/화이트밸런스/초점 고정
+   두 카메라 모두 자동 노출/화이트밸런스 끄고 수동 고정 권장 → 프레임 간 색·밝기 변동 제거
+   먼저 각 카메라에서 가능한 컨트롤 확인:
+   $ v4l2-ctl -d /dev/video0 --list-ctrls
+   $ v4l2-ctl -d /dev/video0 --set-ctrl=auto_exposure=1        # off (장치에 따라 이름 다름)
+   $ v4l2-ctl -d /dev/video0 --set-ctrl=exposure_absolute=200
+   $ v4l2-ctl -d /dev/video0 --set-ctrl=white_balance_automatic=0
+   $ v4l2-ctl -d /dev/video0 --set-ctrl=brightness=128
+    (컨트롤 이름/값은 --list-ctrls 결과에 따라 조정)
