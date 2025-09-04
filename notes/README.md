@@ -9,10 +9,8 @@
    #### P8 pin number : 11,12,15,16   
    #### P9 pin number : 1,2 => GND
    
-
-![20250818_132013](https://github.com/user-attachments/assets/18edf058-d9f0-482f-9d2f-9a91c4a87eba)
-![20250818_132024](https://github.com/user-attachments/assets/2e2824c6-c735-4f48-91b3-83553e8bb40d)
-
+![20250818_132013](https://github.com/user-attachments/assets/cea52a9b-9728-482e-8a10-0598176d5039)
+![20250818_132024](https://github.com/user-attachments/assets/912653bc-2a8f-4b97-a06e-cd0d55a4f4bb)
 
    
 ## 2. GPIO control 2 (from RUST)
@@ -34,7 +32,7 @@ https://github.com/user-attachments/assets/64102ca5-d0a9-471f-a96d-ad6ac5cfcf4a
 ## 3. Wifi module Bring-up
    ### Hardware
    #### use : ESP32-DEVKIT-V4 board
-   ![20250826_212224](https://github.com/user-attachments/assets/d11a86c5-587a-4552-80a3-1542bf9c9bc8)
+   ![20250826_212224](https://github.com/user-attachments/assets/735788cb-06dc-46e0-8fbc-aab2b3a26d43)
 | ESP32 DEVKIT V4 핀 | BeagleBone Black 핀 | 설명 |
 |------|---|---|
 | VIN (또는 5V)	| P9_05 (VDD_5V) | ESP32에 5V 전원 공급 |
