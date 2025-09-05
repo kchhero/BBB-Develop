@@ -35,3 +35,17 @@ $ ffplay -f v4l2 -video_size 640x480 -input_format mjpeg /dev/video0
 ### Camera Placement Strategy Workflow
 Fixed Camera --> Wrist-Mounted Camera (Near End-Effector)
 
+## Step3. Opencv test in BBB
+First, opencv package built in yocto image
+and test on BBB board
+```
+python3 - << 'EOF'
+import cv2
+cap = cv2.VideoCapture(0)
+if cap.isOpened():
+    print("Camera opened successfully")
+else:
+    print("Camera open failed")
+cap.release()
+EOF
+```
