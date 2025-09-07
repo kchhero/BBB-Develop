@@ -24,6 +24,7 @@ BBLAYERS ?= " \
   /home/suker/myYocto/poky/meta-arm/meta-arm \
   /home/suker/myYocto/poky/meta-ti/meta-ti-bsp \
   /home/suker/myYocto/poky/meta-qt5 \
+  /home/suker/myYocto/poky/meta-clang.git \
   /home/suker/myYocto/poky/meta-sukerbeaglebone \
   "
   
