@@ -58,6 +58,14 @@ IMAGE_INSTALL:append = " \
         alsa-utils \
         "
 
+# for camera tracing
+IMAGE_INSTALL:append = " \
+        opencv \
+        cmake \
+        make \
+        g++ \
+        "
+
 # IMAGE_INSTALL:remove = "mesa-pvr"
 # MACHINE_FEATURES:remove = "gpu"
 
