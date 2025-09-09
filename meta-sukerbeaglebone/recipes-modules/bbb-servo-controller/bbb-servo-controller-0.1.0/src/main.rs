@@ -164,17 +164,31 @@ async fn main() -> std::io::Result<()> {
     let states_clone = Arc::clone(&motor_states);
     let pca_clone = Arc::clone(&pca);
     thread::spawn(move || {
-        let update_interval = Duration::from_millis(20);
+        let update_interval = Duration::from_millis(20); //50hz
         loop {
             let mut states = states_clone.lock().unwrap();
             if !states.is_empty() {
                 let mut pca = pca_clone.lock().unwrap();
                 for (ch_num, state) in states.iter_mut() {
-                    if state.on && (state.current_angle - state.target_angle).abs() > 0.1 {
-                        let max_delta = state.speed * 0.020;
+                    if state.on {                        
                         let diff = state.target_angle - state.current_angle;
-                        state.current_angle += diff.signum() * max_delta.min(diff.abs());
+                        let dt = 0.020; // 20ms
 
+                        let delta = if diff.abs() > 10.0 {
+                            // 목표와 차이가 크면 linear step으로 빠르게 이동
+                            let max_delta = state.speed * 0.1 * dt; // scaling factor로 전체 속도 조절
+                            diff.signum() * max_delta.min(diff.abs())
+                        } else if diff.abs() > 0.1 {
+                            // 목표 근처에서는 P-controller로 감속
+                            diff * 0.2 // gain 조정 가능
+                        } else {
+                            // 거의 도달했으면 바로 target_angle 세팅
+                            0.0
+                        };
+                        
+                        state.current_angle += delta;
+
+                        // PCA9685에 각도 전송
                         if let Some(channel_enum) = u8_to_channel(*ch_num) {
                             let pulse = servo_angle_to_pulse(state.current_angle);
                             let _ = pca.set_channel_on_off(channel_enum, 0, pulse);
