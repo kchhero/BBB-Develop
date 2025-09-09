@@ -8,11 +8,14 @@ SRC_URI = "file://main.cpp \
         "
 S = "${WORKDIR}"
 
-DEPENDS = " opencv"
+DEPENDS = " opencv i2c-tools"
+RDEPENDS:${PN} += " i2c-tools"
+
 inherit pkgconfig
 
 do_compile() {
         ${CXX} ${CXXFLAGS} ${LDFLAGS} \
+        -I ${STAGING_INCDIR} \
         $(pkg-config --cflags opencv4) \
         -o bbb-vision-test main.cpp \
         $(pkg-config --libs opencv4)
