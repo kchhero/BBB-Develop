@@ -46,6 +46,7 @@ I'm organizing the data for positions 1 through 10 into a table.
 I plan to explore ways to train the model using the above data.
 
 ### DATA
+```
 <10>
 Marker 3 centroid: (140,304.75)
 Marker 0 centroid: (316.25,367.25)
@@ -75,5 +76,5 @@ ch 15 : angle 95
 ch 14 : angle 35
 ch 13 : angle 42
 ch 12 : angle 20
-
+```
 
