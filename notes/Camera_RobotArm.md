@@ -78,3 +78,11 @@ ch 13 : angle 42
 ch 12 : angle 20
 ```
 
+<This is a video of stacking the objects in marker 8 at the red location.>
+
+
+https://github.com/user-attachments/assets/35f055e5-c893-46a7-8d66-051726d96fde
+
+
+
+
