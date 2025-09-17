@@ -56,6 +56,7 @@ IMAGE_INSTALL:append = " \
 # for my applications
 IMAGE_INSTALL:append = " \
         myivi \
+        systemd-analyze \
         "
 
 # IMAGE_INSTALL:remove = "mesa-pvr"

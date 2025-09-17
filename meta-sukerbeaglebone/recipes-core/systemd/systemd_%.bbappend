@@ -8,6 +8,7 @@ SRC_URI += " \
 #             "
 
 PACKAGECONFIG:append = " networkd resolved"
+PACKAGECONFIG:append = " tools"
 
 do_install:append() {
     install -d ${D}${sysconfdir}/systemd/network
