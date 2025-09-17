@@ -1,0 +1,172 @@
+From bf2d514f6542909ae5d3f2e3963ae3c00c0b8ae4 Mon Sep 17 00:00:00 2001
+From: kchhero <kchhero@gmail.com>
+Date: Mon, 15 Sep 2025 22:41:57 +0900
+Subject: [PATCH 10/11] uultrasonic sensor init, SEN136B5B
+
+---
+ arch/arm/boot/dts/am335x-bone-common.dtsi | 14 ++++
+ drivers/misc/Kconfig                      |  8 ++
+ drivers/misc/Makefile                     |  1 +
+ drivers/misc/sen136b5b.c                  | 97 +++++++++++++++++++++++
+ 4 files changed, 120 insertions(+)
+ create mode 100644 drivers/misc/sen136b5b.c
+
+diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335x-bone-common.dtsi
+index c44a5ad3937e..5c27674a4e0a 100644
+--- a/arch/arm/boot/dts/am335x-bone-common.dtsi
++++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
+@@ -186,6 +186,20 @@ AM33XX_PADCONF(AM335X_PIN_GPMC_AD6, PIN_INPUT_PULLUP, MUX_MODE1) /* gpmc_ad6.mmc
+ 			AM33XX_PADCONF(AM335X_PIN_GPMC_AD7, PIN_INPUT_PULLUP, MUX_MODE1) /* gpmc_ad7.mmc1_dat7 */
+ 		>;
+ 	};
++
++	ultrasonic_pins: pinmux_ultrasonic_pins {
++		pinctrl-single,pins = <
++			AM33XX_PADCONF(AM335X_PIN_MCASP0_FSR, PIN_INPUT_PULLUP, MUX_MODE7) /* mcasp0_fsr */
++		>;
++	};
++};
++
++ultrasonic@0 {
++    compatible = "bbb,sen136b5b";
++    pinctrl-names = "default";
++    pinctrl-0 = <&ultrasonic_pins>;
++
++    trigecho-gpios = <&gpio3 19 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &uart0 {
+diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
+index 3740bb0e8838..6898e212b4bc 100644
+--- a/drivers/misc/Kconfig
++++ b/drivers/misc/Kconfig
+@@ -617,6 +617,14 @@ config MARVELL_CN10K_DPI
+ 	  To compile this driver as a module, choose M here: the module
+ 	  will be called mrvl_cn10k_dpi.
+ 
++config SEN136B5B
++    bool "SEN136B5B Ultrasonic Sensor support by SUKER"
++    depends on OF_GPIO
++    default y
++    help
++      Say Y here if you want to enable support for the SEN136B5B
++      ultrasonic range sensor (Trig/Echo shared pin type).
++
+ source "drivers/misc/c2port/Kconfig"
+ source "drivers/misc/eeprom/Kconfig"
+ source "drivers/misc/cb710/Kconfig"
+diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
+index 8700c8131437..324d1eea309c 100644
+--- a/drivers/misc/Makefile
++++ b/drivers/misc/Makefile
+@@ -73,3 +73,4 @@ obj-$(CONFIG_TPS6594_PFSM)	+= tps6594-pfsm.o
+ obj-$(CONFIG_NSM)		+= nsm.o
+ obj-$(CONFIG_MARVELL_CN10K_DPI)	+= mrvl_cn10k_dpi.o
+ obj-y				+= keba/
++obj-$(CONFIG_SEN136B5B)		+= sen136b5b.o
+diff --git a/drivers/misc/sen136b5b.c b/drivers/misc/sen136b5b.c
+new file mode 100644
+index 000000000000..3bb3ce298557
+--- /dev/null
++++ b/drivers/misc/sen136b5b.c
+@@ -0,0 +1,97 @@
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/gpio/consumer.h>
++#include <linux/ktime.h>
++#include <linux/delay.h>
++
++struct ultrasonic_dev {
++    struct gpio_desc *sig;
++};
++
++static ssize_t distance_show(struct device *dev,
++                             struct device_attribute *attr, char *buf)
++{
++    struct ultrasonic_dev *ud = dev_get_drvdata(dev);
++    ktime_t start, end;
++    s64 duration_us;
++    long distance_cm;
++
++    /* 1) SIG 핀을 출력 모드로 전환 */
++    gpiod_direction_output(ud->sig, 0);
++
++    /* 2) 10us 펄스 발생 */
++    gpiod_set_value_cansleep(ud->sig, 1);
++    udelay(10);
++    gpiod_set_value_cansleep(ud->sig, 0);
++
++    /* 3) 바로 입력 모드로 전환 */
++    gpiod_direction_input(ud->sig);
++
++    /* 4) Echo rising edge 대기 */
++    while (!gpiod_get_value_cansleep(ud->sig))
++        cpu_relax();
++    start = ktime_get();
++
++    /* 5) Echo falling edge 대기 */
++    while (gpiod_get_value_cansleep(ud->sig))
++        cpu_relax();
++    end = ktime_get();
++
++    /* 6) 시간차로 거리 계산 */
++    duration_us = ktime_to_us(ktime_sub(end, start));
++    distance_cm = duration_us / 58;  // 센서 공식
++
++    return scnprintf(buf, PAGE_SIZE, "%ld\n", distance_cm);
++}
++static DEVICE_ATTR_RO(distance);
++
++static int ultrasonic_probe(struct platform_device *pdev)
++{
++    struct ultrasonic_dev *ud;
++    int ret;
++
++    ud = devm_kzalloc(&pdev->dev, sizeof(*ud), GFP_KERNEL);
++    if (!ud)
++        return -ENOMEM;
++
++    ud->sig = devm_gpiod_get(&pdev->dev, "trigecho", GPIOD_OUT_LOW);
++    if (IS_ERR(ud->sig)) {
++        dev_err(&pdev->dev, "Failed to get SIG gpio\n");
++        return PTR_ERR(ud->sig);
++    }
++
++    platform_set_drvdata(pdev, ud);
++
++    ret = device_create_file(&pdev->dev, &dev_attr_distance);
++    if (ret)
++        return ret;
++
++    dev_info(&pdev->dev, "SEN136B5B ultrasonic sensor (1-pin) registered\n");
++    return 0;
++}
++
++static int ultrasonic_remove(struct platform_device *pdev)
++{
++    device_remove_file(&pdev->dev, &dev_attr_distance);
++    return 0;
++}
++
++static const struct of_device_id ultrasonic_of_match[] = {
++    { .compatible = "bbb,sen136b5b" },
++    { }
++};
++MODULE_DEVICE_TABLE(of, ultrasonic_of_match);
++
++static struct platform_driver ultrasonic_driver = {
++    .probe = ultrasonic_probe,
++    .remove = ultrasonic_remove,
++    .driver = {
++        .name = "sen136b5b",
++        .of_match_table = ultrasonic_of_match,
++    },
++};
++module_platform_driver(ultrasonic_driver);
++
++MODULE_LICENSE("GPL");
++MODULE_AUTHOR("SUKER");
++MODULE_DESCRIPTION("SEN136B5B Ultrasonic Sensor Driver (1-pin SIG)");
+-- 
+2.43.0
+

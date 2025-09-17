@@ -1,0 +1,24 @@
+From 0f1f4b11a1c3a61ce9420b44f2ab89233d636257 Mon Sep 17 00:00:00 2001
+From: kchhero <kchhero@gmail.com>
+Date: Fri, 29 Aug 2025 10:52:13 +0900
+Subject: [PATCH 09/11] DEBUG: pinctrl enable
+
+---
+ arch/arm/configs/bb.org_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/configs/bb.org_defconfig b/arch/arm/configs/bb.org_defconfig
+index ab304f6a62ef..c6436708c5f4 100644
+--- a/arch/arm/configs/bb.org_defconfig
++++ b/arch/arm/configs/bb.org_defconfig
+@@ -1114,6 +1114,7 @@ CONFIG_SPI_SLAVE_TIME=m
+ CONFIG_SPI_SLAVE_SYSTEM_CONTROL=m
+ CONFIG_PPS_CLIENT_LDISC=m
+ CONFIG_PPS_CLIENT_GPIO=m
++CONFIG_DEBUG_PINCTRL=y
+ CONFIG_PINCTRL_MCP23S08=m
+ CONFIG_PINCTRL_PALMAS=y
+ CONFIG_PINCTRL_SINGLE=y
+-- 
+2.43.0
+

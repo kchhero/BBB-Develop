@@ -8,7 +8,7 @@ SRC_URI:remove = " \
 #     git:///home/suker/myYocto/MYSRC/linux;protocol=file;branch=v6.12.23-ti-arm32-r11;depth=5 \
 # "
 
-SRCREV:armv7a = "0f1f4b11a1c3a61ce9420b44f2ab89233d636257"
+SRCREV:armv7a = "c49b79e5daf126b190239cd2dd9cbce61bd9972f"
 PV:armv7a = "v6.12.23-ti-arm32-r11+git${SRCPV}"
 BRANCH:armv7a = "v6.12.23-ti-arm32-r11"
 

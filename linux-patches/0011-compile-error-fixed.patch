@@ -1,0 +1,98 @@
+From c49b79e5daf126b190239cd2dd9cbce61bd9972f Mon Sep 17 00:00:00 2001
+From: kchhero <kchhero@gmail.com>
+Date: Mon, 15 Sep 2025 23:53:32 +0900
+Subject: [PATCH 11/11] compile error fixed
+
+---
+ arch/arm/boot/dts/am335x-bone-common.dtsi   |  8 --------
+ arch/arm/boot/dts/am335x-boneblack-revd.dts | 12 +++++++++++-
+ drivers/misc/sen136b5b.c                    |  8 ++++++--
+ 3 files changed, 17 insertions(+), 11 deletions(-)
+
+diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335x-bone-common.dtsi
+index 5c27674a4e0a..2942ba3a1af3 100644
+--- a/arch/arm/boot/dts/am335x-bone-common.dtsi
++++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
+@@ -194,14 +194,6 @@ AM33XX_PADCONF(AM335X_PIN_MCASP0_FSR, PIN_INPUT_PULLUP, MUX_MODE7) /* mcasp0_fsr
+ 	};
+ };
+ 
+-ultrasonic@0 {
+-    compatible = "bbb,sen136b5b";
+-    pinctrl-names = "default";
+-    pinctrl-0 = <&ultrasonic_pins>;
+-
+-    trigecho-gpios = <&gpio3 19 GPIO_ACTIVE_HIGH>;
+-};
+-
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pins>;
+diff --git a/arch/arm/boot/dts/am335x-boneblack-revd.dts b/arch/arm/boot/dts/am335x-boneblack-revd.dts
+index ab0261e02b4c..aab46e8a4672 100644
+--- a/arch/arm/boot/dts/am335x-boneblack-revd.dts
++++ b/arch/arm/boot/dts/am335x-boneblack-revd.dts
+@@ -19,7 +19,7 @@ chosen {
+ 	};
+ 
+ 	myleds {
+-		compatible = "mycompany,myleds";
++		compatible = "bbb,myleds";
+ 		status = "okay";
+ 
+ 		led-gpios = <&gpio1 12 GPIO_ACTIVE_HIGH>,
+@@ -31,6 +31,16 @@ myleds {
+ 	};
+ };
+ 
++&ocp {
++    ultrasonic@0 {
++        compatible = "bbb,sen136b5b";
++        status = "okay";
++        pinctrl-names = "default";
++        pinctrl-0 = <&ultrasonic_pins>;
++        trigecho-gpios = <&gpio3 19 GPIO_ACTIVE_HIGH>;
++    };
++};
++
+ &cpu0_opp_table {
+ 	/*
+ 	 * All PG 2.0 silicon may not support 1GHz but some of the early
+diff --git a/drivers/misc/sen136b5b.c b/drivers/misc/sen136b5b.c
+index 3bb3ce298557..a05f05728172 100644
+--- a/drivers/misc/sen136b5b.c
++++ b/drivers/misc/sen136b5b.c
+@@ -3,6 +3,9 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/ktime.h>
+ #include <linux/delay.h>
++#include <linux/of.h>
++#include <linux/of_gpio.h>
++#include <linux/of_device.h>
+ 
+ struct ultrasonic_dev {
+     struct gpio_desc *sig;
+@@ -50,6 +53,8 @@ static int ultrasonic_probe(struct platform_device *pdev)
+     struct ultrasonic_dev *ud;
+     int ret;
+ 
++    dev_info(&pdev->dev, "SEN136B5B probe called\n");
++
+     ud = devm_kzalloc(&pdev->dev, sizeof(*ud), GFP_KERNEL);
+     if (!ud)
+         return -ENOMEM;
+@@ -70,10 +75,9 @@ static int ultrasonic_probe(struct platform_device *pdev)
+     return 0;
+ }
+ 
+-static int ultrasonic_remove(struct platform_device *pdev)
++static void ultrasonic_remove(struct platform_device *pdev)
+ {
+     device_remove_file(&pdev->dev, &dev_attr_distance);
+-    return 0;
+ }
+ 
+ static const struct of_device_id ultrasonic_of_match[] = {
+-- 
+2.43.0
+

@@ -17,4 +17,7 @@ DEPENDS += "qtbase"
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${B}/simplebuttons ${D}${bindir}/simplebuttons
+
+    #copy to build dir in local PC
+    cp simplebuttons /home/suker/myYocto/poky/build-ivi-image/
 }
