@@ -7,6 +7,8 @@ My PC is Ubuntu 16.04.
 I'm connecting a Waveshare 7" HDMI-LCD-(C) and building a simple user input environment using a QT app. For example, pressing touch button A will activate GPIO pin 1 high. The specific operation method will be documented on this page.
 I created the repository on August 12, 2025, but I've already completed the Yocto build configuration and LCD bring-up. There was a slight error because the touch operation was handled by the USB-HID driver, not I2C.
 
+https://github.com/user-attachments/assets/569c6921-2195-438b-8898-641c07f12a0a
+
 ![20250818_131248](https://github.com/user-attachments/assets/bf92755b-ffc1-4963-860f-cb77fa87d6d7)
 
 
