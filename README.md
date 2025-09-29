@@ -107,5 +107,6 @@ PARALLEL_MAKE ?= "-j 8"
 * Receive data from the camera module and display it on the board LCD.
 * Receive data from the camera module and send it to a PC or smartphone
 
-<img width="1775" height="901" alt="image" src="https://github.com/user-attachments/assets/a5bb9e10-ce34-4db2-992d-a2498879ec20" />
+<img width="1856" height="949" alt="BBB_doc" src="https://github.com/user-attachments/assets/12ec3983-603f-4160-a683-73179e0afb4f" />
+
 
